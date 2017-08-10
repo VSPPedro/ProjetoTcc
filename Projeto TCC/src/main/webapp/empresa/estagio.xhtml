@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/templating/template.xhtml">
+	
+	<f:metadata>
+		<f:viewParam name="id" value="#{empresaBean.id}"/>
+		<f:event type="preRenderView" listener="#{empresaBean.selecionarEstagio}"/>
+	</f:metadata>
+	
+	<ui:define name="tbody">
+		<div class="container main">
+			
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="text-center">
+						<i class="glyphicon glyphicon-tags" style="margin-right: 5px;"></i>
+						Estágiário: #{empresaBean.estagio.aluno.nome }
+					</h3>
+					
+					<hr />
+					<h:link outcome="/empresa/mostrarEstagios" class="btn btn-default btn-sm" style="margin-right: 5px;">
+						<i class="glyphicon glyphicon-arrow-left"></i> 
+						Voltar
+					</h:link>
+					<hr />
+					<div class="row">
+						<h:messages errorClass="alert alert-danger" infoClass="alert alert-success"/>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<b>Estagiário:</b>
+						</div>
+						<div class="col-md-9">#{empresaBean.estagio.aluno.nome }</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<b>Atividade Principal:</b>
+						</div>
+						<div class="col-md-9">#{empresaBean.estagio.atividadePrincipal }</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<b>Carga Horária Semanal:</b>
+						</div>
+						<div class="col-md-9">#{empresaBean.estagio.chSemanal }</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<b>Valor Bolsa:</b>
+						</div>
+						<div class="col-md-9">
+						<h:outputText value="#{empresaBean.estagio.valorBolsa }"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<b>Valor Transporte:</b>
+						</div>
+						<div class="col-md-9">
+						<h:outputText value="#{empresaBean.estagio.valorTransporte }"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3">
+							<b>Valor Alimentação:</b>
+						</div>
+						<div class="col-md-9">
+						<h:outputText value="#{empresaBean.estagio.valorAlimentacao }"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
+						</div>
+					</div>
+					
+					<div class="text-left" style="margin-top: 20px;">
+						<h:form>
+							<h:commandButton actionListener="#{empresaBean.fecharInscricoes}" value="Fechar inscrições" class="btn btn-danger btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Aprovado'}"/>
+							<h:commandButton actionListener="#{empresaBean.solicitarAprovacaoEstagio}" value="Solicitar aprovação de Estágio" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Finalizado'}"/>
+						</h:form>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+		</div>
+	</ui:define>	
+
+</ui:composition>
+
+
+
+
+
+
+

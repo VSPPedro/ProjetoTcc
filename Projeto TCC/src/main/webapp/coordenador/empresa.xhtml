@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/templating/template.xhtml">
+	
+	<f:metadata>
+		<f:viewParam name="id" value="#{coordenadorBean.id}"/>
+		<f:event type="preRenderView" listener="#{coordenadorBean.selecionarEmpresa}"/>
+	</f:metadata>
+	
+	<ui:define name="tbody">
+		<div class="container main">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3 class="text-center">
+						<i class="glyphicon glyphicon-tower"></i> #{coordenadorBean.empresa.nome }
+					</h3>
+					<hr />
+				</div>
+			</div>
+			<div class="row">
+				<div class="container">
+					<div class="col-md-12">
+						<h:form>
+							<h:link outcome="/coordenador/listarEmpresas" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-arrow-left"></i> Voltar</h:link>
+							<h:link outcome="/coordenador/editarEmpresa?id=#{coordenadorBean.empresa.id}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-cog"></i> Editar</h:link>
+			
+							<h:commandLink action="#{coordenadorBean.desbloquearEmpresa(coordenadorBean.empresa)}" class="btn btn-success btn-sm" rendered="#{coordenadorBean.empresa.ativa eq false}">
+								<i class="glyphicon glyphicon-ban-circle"></i> 
+									Desbloquear
+							</h:commandLink>
+							
+							<h:commandLink action="#{coordenadorBean.bloquearEmpresa(coordenadorBean.empresa)}" class="btn btn-danger btn-sm" rendered="#{coordenadorBean.empresa.ativa eq true}">
+								<i class="glyphicon glyphicon-ok-circle"></i> 
+									Bloquear
+							</h:commandLink>
+						</h:form>
+					</div>
+					
+					<hr />
+					
+					<h:dataTable value="#{coordenadorBean.empresa}" var="e"
+								class="table table-striped table-hover"
+								headerClass="background-color: #34e89e; color: #fff;">
+						<h:column>
+							<f:facet name="header"></f:facet>
+							<i class="glyphicon glyphicon-menu-right"></i>
+						</h:column>
+						<h:column>
+							<f:facet name="header">Nome</f:facet>
+							#{e.nome }
+						</h:column>
+						<h:column>
+							<f:facet name="header">Endereço</f:facet>
+							#{e.endereco.rua }
+						</h:column>
+						<h:column>
+							<f:facet name="header">CNPJ</f:facet>
+							#{e.cnpj }
+						</h:column>
+						<h:column>
+							<f:facet name="header">Atividade Principal</f:facet>
+							#{e.atividadePrincipal }
+						</h:column>
+					</h:dataTable>
+					
+				</div>
+			</div>
+		</div>
+	</ui:define>
+	<ui:define name="tscripts">
+		<script>
+			$(document).ready(function() {
+				$('tr[data-href]').on("click", function() {
+					document.location = $(this).data('href');
+					console.log("clicado");
+				});
+			});
+		</script>
+	</ui:define>
+</ui:composition>
+

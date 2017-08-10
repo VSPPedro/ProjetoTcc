@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="../templating/template.xhtml">
+	<ui:define name="tbody">
+	<f:metadata>
+        <f:event type="preRenderView" listener="#{alunoBean.listarOfertasDisponiveis}"/>
+    </f:metadata>
+	<div class="container main">
+	   <div class="row">
+		<div class="col-md-12 text-center">
+			<h3 class="text-center"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Ofertas Dísponíveis</h3>
+		</div>
+		</div>
+		<hr></hr>
+		
+		<div class="row">
+		<div class="container">
+		<ui:fragment rendered="#{empty alunoBean.ofertasDisponiveis}">
+					<div class="row">
+						<div class="alert alert-info" role="alert">
+						<div class="text-center">Nenhuma oferta encontrada!</div>
+					</div>
+					</div>
+		</ui:fragment>
+		<h:form id="tdsOfertas">
+			<h:dataTable id="tbTdsOfertas" value="#{alunoBean.ofertasDisponiveis}" var="oferta"  styleClass="table-hover table-condensed table table-striped">
+				
+				<h:column>
+					<f:facet name="header" >
+						<h:outputText value=""/>
+					</f:facet>
+					
+					<h:link outcome="/aluno/oferta?id=#{oferta.id}">
+						<botton class="btn btn-default">
+							<i class="glyphicon glyphicon-plus"></i>
+						</botton>
+					</h:link>	
+					
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Empresa"/>
+					</f:facet>
+					#{oferta.empresa.nome}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Ativ. Principal"/>
+					</f:facet>
+					#{oferta.atividadePrincipal}
+				</h:column>
+				
+				<h:column headerClass="teste">
+					<f:facet name="header">
+						<h:outputText value="CH Semanal"/>
+					</f:facet>
+					#{oferta.chSemanal}
+				</h:column>
+				
+				<h:column headerClass="teste">
+					<f:facet name="header">
+						<h:outputText value="Valor Bolsa"/>
+						
+					</f:facet>
+					
+					
+					
+					#{oferta.valorBolsa}
+				</h:column>
+			  	
+			</h:dataTable>
+		</h:form>
+		
+		</div>
+		</div>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>

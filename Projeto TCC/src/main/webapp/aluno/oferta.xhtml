@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<f:metadata>
+		<f:viewParam name="id" value="#{alunoBean.id}"/>
+		<f:event type="preRenderView" listener="#{alunoBean.selecionarOferta}"/>
+		<f:event type="preRenderView" listener="#{alunoBean.verificarInscrito}"/>
+</f:metadata>
+
+<ui:composition template="../templating/template.xhtml">
+
+	<ui:define name="tbody">
+	   	<h:form id="inscricao">
+	<div class="row">
+		
+		
+		
+		
+		<div class="col-md-12">
+		
+			<h3 class="text-center">
+				<i class="glyphicon glyphicon-tags" style="margin-right: 10px;"></i>Oferta #{alunoBean.oferta.empresa.nome}
+			</h3>
+			<hr>
+			</hr>
+		</div>
+	</div>
+		<h:link outcome="/index.jsf" class="btn btn-default btn-sm">
+                        <i class="glyphicon glyphicon-arrow-left"></i> 
+                        Voltar
+        </h:link>
+	<hr></hr>
+	<div class="row">
+		<h:messages globalOnly="true" errorClass="alert alert-danger" infoClass="alert alert-success"/>
+	</div>
+	<div class="row">
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<b>Empresa:</b>
+				</div>
+				<div class="col-md-9">#{alunoBean.oferta.empresa.nome}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<b>Atividade Principal:</b>
+				</div>
+				<div class="col-md-9">#{alunoBean.oferta.atividadePrincipal}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<b>Carga Horária Semanal:</b>
+				</div>
+				<div class="col-md-9">#{alunoBean.oferta.chSemanal}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<b>Valor Bolsa:</b>
+				</div>
+				<div class="col-md-9">
+				<h:outputText value="#{alunoBean.oferta.valorBolsa}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<b>Valor Transporte:</b>
+				</div>
+	
+				<div class="col-md-9">
+				<h:outputText value="#{alunoBean.oferta.valorTransporte}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+				
+					<b>Valor Alimentação:</b>
+				</div>
+				<div class="col-md-9">
+				<h:outputText value="#{alunoBean.oferta.valorAlimentacao}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
+				</div>
+				
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<b>Pre-Requisitos:</b>
+				</div>
+				<div class="col-md-9">#{alunoBean.oferta.preRequisitos}</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<b>Habilidades Necessarias:</b>
+				</div>
+				<div class="col-md-9">#{alunoBean.oferta.habilidadesTecnicasNecessarias}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-3">
+					<b>Habilidades Desejáveis:</b>
+				</div>
+				<div class="col-md-9">#{alunoBean.oferta.habilidadesTecnicasDesejadas}
+				</div>
+			</div>
+			<hr></hr>
+		</div>
+	</div>
+
+	
+	<ui:fragment rendered="#{alunoBean.inscrito}">
+				<div class="row"><a href="" class="btn btn-success disabled">Você já está inscrito!</a></div>
+	</ui:fragment>
+	
+	<ui:fragment rendered="#{!alunoBean.inscrito}">
+				<div class="row">
+					<div class="col-md-3"><h:commandLink styleClass="btn btn-success" value="Quero me inscrever" action="#{alunoBean.inscreverAluno}"/></div>
+				</div>
+	</ui:fragment>
+		
+</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/templating/template.xhtml">
+	
+	<ui:define name="tbody">
+		<div class="container main">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h1 class="text-center">Cadastrar Empresa</h1>
+				</div>
+			</div>
+			<hr />
+			<h:link outcome="cadastrar"
+				class="btn btn-default btn-sm"><i
+				class="glyphicon glyphicon-arrow-left"></i> Voltar</h:link>
+			<hr />
+		
+		
+			<div class="container">
+				<div class="row">
+	    			<h:messages errorClass="alert alert-danger" />
+	    		</div>
+				<h:form class="well">
+					
+					<div class="row">
+						<div class=" col-md-6">
+							<div class="form-group">
+								<h:outputLabel for="nome">Nome da Empresa:</h:outputLabel>
+								<h:inputText name="nome" id="nome" class="form-control" value="#{empresaBean.empresa.nome}" required="true" requiredMessage="Nome é obrigatório"/>
+							</div>
+							<div class="form-group">
+								<h:outputLabel for="endereco">Endereço:</h:outputLabel>
+
+								<h:inputText name="endereco" id="endereco" class="form-control" value="#{empresaBean.endereco.rua}" required="true" requiredMessage="Endereço é obrigatório"/>
+
+							</div>
+							<div class="form-group">
+								<h:outputLabel for="telefone">Telefone:</h:outputLabel>
+								<h:inputText name="telefone" id="telefone" class="form-control" value="#{empresaBean.empresa.telefone}"/>
+							</div>
+							<div class="form-group">
+								<h:outputLabel for="email">Email:</h:outputLabel>
+								<h:inputText name="email" id="email" class="form-control" value="#{empresaBean.empresa.email}" required="true" requiredMessage="Email é obrigatório"/>
+							</div>
+							<div class="form-group">
+								<h:outputLabel for="senha">Senha:</h:outputLabel>
+
+								<h:inputSecret name="senha" id="senha" class="form-control" value="#{empresaBean.empresa.senha}" required="true" requiredMessage="Senha é obrigatório"/>
+
+							</div>
+		
+						</div>
+						<div class=" col-md-6">
+							<div class="form-group">
+								<h:outputLabel for="urlSite">Site URL:</h:outputLabel>
+								<h:inputText name="urlSite" id="urlSite" class="form-control" value="#{empresaBean.empresa.urlSite}" required="true" requiredMessage="Site é obrigatório"/>
+							</div>
+							<div class="form-group">
+								<h:outputLabel for="pessoaContato">Responsável para Contato:</h:outputLabel>
+								<h:inputText name="pessoaContato" id="pessoaContato" class="form-control" value="#{empresaBean.empresa.pessoaContato}" required="true" requiredMessage="Informe um responsável para contato"/>
+							</div>
+
+							<div class="form-group">
+								<h:outputLabel for="atividadePrincipal">Atividade Principal:</h:outputLabel>
+								<h:inputText name="atividadePrincipal" id="atividadePrincipal" class="form-control" value="#{empresaBean.empresa.atividadePrincipal}" required="true" requiredMessage="Atividade principal é obrigatório"/>
+							</div>
+							
+							<div class="form-group">
+								<h:outputLabel for="cnpj">CNPJ:</h:outputLabel>
+								<h:inputText name="cnpj" id="cnpj" class="form-control" value="#{empresaBean.empresa.cnpj}" required="true" requiredMessage="CNPJ é obrigatório"/>
+							</div>
+		
+						</div>
+					</div>
+					<div class="row text-center">
+						<h:commandButton action="#{empresaBean.cadastrarEmpresa}" value="Cadastrar Empresa" class="btn btn-success" />
+					</div>
+				</h:form>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>
+
+
+
+
+
+

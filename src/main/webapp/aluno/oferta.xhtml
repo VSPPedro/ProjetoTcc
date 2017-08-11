@@ -24,7 +24,7 @@
 		<div class="col-md-12">
 		
 			<h3 class="text-center">
-				<i class="glyphicon glyphicon-tags" style="margin-right: 10px;"></i>Oferta #{alunoBean.oferta.empresa.nome}
+				<i class="glyphicon glyphicon-tags" style="margin-right: 10px;"></i>TCC #{alunoBean.oferta.professor.nome}
 			</h3>
 			<hr>
 			</hr>
@@ -43,69 +43,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3">
-					<b>Empresa:</b>
+					<b>Professor:</b>
 				</div>
-				<div class="col-md-9">#{alunoBean.oferta.empresa.nome}</div>
+				<div class="col-md-9">#{alunoBean.oferta.professor.nome}</div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">
-					<b>Atividade Principal:</b>
+					<b>Titulo do TCC:</b>
 				</div>
-				<div class="col-md-9">#{alunoBean.oferta.atividadePrincipal}</div>
+				<div class="col-md-9">#{alunoBean.oferta.titulo}</div>
 			</div>
 			<div class="row">
 				<div class="col-md-3">
-					<b>Carga Horária Semanal:</b>
+					<b>Descrição do TCC:</b>
 				</div>
-				<div class="col-md-9">#{alunoBean.oferta.chSemanal}</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<b>Valor Bolsa:</b>
-				</div>
-				<div class="col-md-9">
-				<h:outputText value="#{alunoBean.oferta.valorBolsa}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-				</div>
-				
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<b>Valor Transporte:</b>
-				</div>
-	
-				<div class="col-md-9">
-				<h:outputText value="#{alunoBean.oferta.valorTransporte}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-				
-					<b>Valor Alimentação:</b>
-				</div>
-				<div class="col-md-9">
-				<h:outputText value="#{alunoBean.oferta.valorAlimentacao}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-				</div>
-				
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<b>Pre-Requisitos:</b>
-				</div>
-				<div class="col-md-9">#{alunoBean.oferta.preRequisitos}</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<b>Habilidades Necessarias:</b>
-				</div>
-				<div class="col-md-9">#{alunoBean.oferta.habilidadesTecnicasNecessarias}
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3">
-					<b>Habilidades Desejáveis:</b>
-				</div>
-				<div class="col-md-9">#{alunoBean.oferta.habilidadesTecnicasDesejadas}
-				</div>
+				<div class="col-md-9">#{alunoBean.oferta.descricao}</div>
 			</div>
 			<hr></hr>
 		</div>

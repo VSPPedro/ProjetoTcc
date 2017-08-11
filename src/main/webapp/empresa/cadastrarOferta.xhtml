@@ -12,7 +12,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center text-center">
-						<i class="glyphicon glyphicon-tags"></i> Cadastrar Oferta de Estágio
+						<i class="glyphicon glyphicon-tags"></i> Cadastrar Tema de Estagio
 					</h3>
 		
 				</div>
@@ -26,53 +26,22 @@
 						<div class="row">
 							<div class=" col-md-6">
 								<div class="form-group">
-									<h:outputLabel for="atividadePrincipal">Atividade principal</h:outputLabel>
-									<h:inputText name="atividadePrincipal" class="form-control" id="atividadePrincipal" value="#{empresaBean.oferta.atividadePrincipal}" required="true" requiredMessage="Atividade Principal é obrigatório"/>
+									<h:outputLabel for="titulo">Titulo do tema</h:outputLabel>
+									<h:inputTextarea name="titulo" class="form-control" rows="2" id="titulo" value="#{ProfessorBean.oferta.titulo}" required="true" requiredMessage="Titulo do tema é obrigatório"/>
 								</div>
-								
-								<div class="form-group">
-									<h:outputLabel for="chSemanal">Carga Horaria Semanal</h:outputLabel>
-									<h:inputText name="chSemanal" class="form-control" id="chSemanal"  value="#{empresaBean.oferta.chSemanal}" required="true" requiredMessage="Carga Horária Semanal é obrigatório" />
-								</div>
-								
-								<div class="form-group">
-									<h:outputLabel for="valorBolsa">Valor da Bolsa:</h:outputLabel>
-									<h:inputText name="valorBolsa" class="form-control" id="valorBolsa"  value="#{empresaBean.oferta.valorBolsa}" required="true" requiredMessage="Valor da Bolsa é obrigatório" />
-								</div>
-								
-								<div class="form-group">
-									<h:outputLabel for="valorTransporte">Vale Transporte:</h:outputLabel>
-									<h:inputText name="valorTransporte" class="form-control" id="valorTransporte"  value="#{empresaBean.oferta.valorTransporte}" required="true" requiredMessage="Valor do Transporte é obrigatório" />
-								</div>
-								
-								<div class="form-group">
-									<h:outputLabel for="valorAlimentacao">Vale Alimentação:</h:outputLabel>
-									<h:inputText name="valorAlimentacao" class="form-control" id="valorAlimentacao"  value="#{empresaBean.oferta.valorAlimentacao}" required="true" requiredMessage="Valor da Alimentação é obrigatório" />
-								</div>
-								
+														
 							</div>
 							<div class=" col-md-6">
 							
 								<div class="form-group">
-									<h:outputLabel for="preRequisitos">Pré-requisitos:</h:outputLabel>
-									<h:inputTextarea name="preRequisitos" class="form-control" id="preRequisitos" rows="2"  value="#{empresaBean.oferta.preRequisitos}"/>
+									<h:outputLabel for="Descrição">Descrição do Tema:</h:outputLabel>
+									<h:inputTextarea name="Descrição" class="form-control" id="Descrição" rows="2"  value="#{ProfessorBean.oferta.descricao}" required="true" requiredMessage="Descrição do tema é obrigatório"></h:inputTextarea>
 								</div>
-								
-								<div class="form-group">
-									<h:outputLabel for="habilidadesTecnicasNecessarias">Habilidades
-										e competências técnicas necessárias:</h:outputLabel>
-									<h:inputTextarea name="habilidadesTecnicasNecessarias" class="form-control" id="habilidadesTecnicasNecessarias" rows="2"  value="#{empresaBean.oferta.habilidadesTecnicasNecessarias}" />
-								</div>
-								
-								<div class="form-group">
-									<h:outputLabel for="habilidadesTecnicasDesejadas">Habilidades
-										e competências técnicas desejadas:</h:outputLabel>
-									<h:inputTextarea name="habilidadesTecnicasDesejadas" class="form-control" id="habilidadesTecnicasDesejadas" rows="2"  value="#{empresaBean.oferta.habilidadesTecnicasDesejadas}" />
-								</div>
-								
+							</div>	
+							<div class=" col-md-6">	
 								<div class="form-group">
 									<h:outputLabel for="curso">Curso</h:outputLabel>
-									<h:selectOneMenu  value="#{empresaBean.oferta.curso}" class="form-control" name="curso" id="curso" required="true" requiredMessage="Selecionar o curso é obrigatório" >
+									<h:selectOneMenu  value="#{ProfessorBean.oferta.curso}" class="form-control" name="curso" id="curso" required="true" requiredMessage="Selecionar o curso é obrigatório" >
 										<f:converter converterId="CursoConverter" />
 										<f:selectItem noSelectionOption="true" itemLabel="--- Selecione o Curso ---"/>  
                 						<f:selectItems value="#{cursoBean.cursos}" var="c" itemLabel="#{c.nome}" itemValue="#{c}"/>
@@ -82,7 +51,7 @@
 							</div>
 						</div>
 						<div class="row text-center">
-							<h:commandButton action="#{empresaBean.cadastrarOferta}" value="Cadastrar oferta" class="btn btn-success btn-sm" />
+							<h:commandButton action="#{ProfessorBean.cadastrarOferta}" value="Cadastrar Tema" class="btn btn-success btn-sm" />
 						</div>
 					</h:form>
 				</div>

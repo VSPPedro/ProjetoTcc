@@ -8,8 +8,8 @@
 	template="/templating/template.xhtml">
 	
 	<f:metadata>
-		<f:viewParam name="id" value="#{empresaBean.id}"/>
-		<f:event type="preRenderView" listener="#{empresaBean.selecionarEstagio}"/>
+		<f:viewParam name="id" value="#{ProfessorBean.id}"/>
+		<f:event type="preRenderView" listener="#{ProfessorBean.selecionarEstagio}"/>
 	</f:metadata>
 	
 	<ui:define name="tbody">
@@ -19,7 +19,7 @@
 				<div class="col-md-12">
 					<h3 class="text-center">
 						<i class="glyphicon glyphicon-tags" style="margin-right: 5px;"></i>
-						Estágiário: #{empresaBean.estagio.aluno.nome }
+						Aluno concluinte: #{ProfessorBean.estagio.aluno.nome}
 					</h3>
 					
 					<hr />
@@ -39,13 +39,13 @@
 						<div class="col-md-3">
 							<b>Estagiário:</b>
 						</div>
-						<div class="col-md-9">#{empresaBean.estagio.aluno.nome }</div>
+						<div class="col-md-9">#{ProfessorBean.estagio.aluno.nome}</div>
 					</div>
-					<div class="row">
+					<!-- <div class="row">
 						<div class="col-md-3">
 							<b>Atividade Principal:</b>
 						</div>
-						<div class="col-md-9">#{empresaBean.estagio.atividadePrincipal }</div>
+						<div class="col-md-9">#{ProfessorBean.estagio.atividadePrincipal }</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3">
@@ -76,12 +76,12 @@
 						<div class="col-md-9">
 						<h:outputText value="#{empresaBean.estagio.valorAlimentacao }"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
 						</div>
-					</div>
+					</div> -->
 					
 					<div class="text-left" style="margin-top: 20px;">
 						<h:form>
-							<h:commandButton actionListener="#{empresaBean.fecharInscricoes}" value="Fechar inscrições" class="btn btn-danger btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Aprovado'}"/>
-							<h:commandButton actionListener="#{empresaBean.solicitarAprovacaoEstagio}" value="Solicitar aprovação de Estágio" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Finalizado'}"/>
+							<h:commandButton actionListener="#{ProfessorBean.fecharInscricoes}" value="Fechar inscrições" class="btn btn-danger btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Aprovado'}"/>
+							<h:commandButton actionListener="#{ProfessorBean.solicitarAprovacaoEstagio}" value="Solicitar aprovação de Estágio" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Finalizado'}"/>
 						</h:form>
 					</div>
 				</div>

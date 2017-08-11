@@ -59,16 +59,16 @@ public class CoordenadorBean extends GenericBean{
 		
 	}
 	
-	public String salvarEmpresa(){
+	public String salvarProfessor(){
 		String proxView = null;
 		try {
 			ProfessorController ctrl = new ProfessorController();
 			ctrl.salvar(this.professor);
-			this.addSuccessMessage("Empresa salva com sucesso!");
+			this.addSuccessMessage("Professor salvo com sucesso!");
 			proxView = "/coordenador/listarEmpresas?faces-redirect=true";
 			this.professor = new Professor();
 		} catch (PersistenceException e) {
-			this.addErrorMessage("Erro ao tentar salvar a Empresa");
+			this.addErrorMessage("Erro ao tentar salvar a Professor");
 		}
 		
 		return proxView;
@@ -119,12 +119,12 @@ public class CoordenadorBean extends GenericBean{
 		this.addSuccessMessage("Estagio foi finalizado com sucesso!");
 	}
 	
-	public void bloquearEmpresa(Professor professor){
+	public void bloquearProfessor(Professor professor){
 		ProfessorController ctrl = new ProfessorController();
 		ctrl.bloquearprofessor(professor.getId());
 	}
 	
-	public void desbloquearEmpresa(Professor professor){
+	public void desbloquearProfessor(Professor professor){
 		ProfessorController ctrl = new ProfessorController();
 		ctrl.desbloquearprofessor(professor.getId());
 	}

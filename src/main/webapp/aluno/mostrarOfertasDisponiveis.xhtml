@@ -14,7 +14,7 @@
 	<div class="container main">
 	   <div class="row">
 		<div class="col-md-12 text-center">
-			<h3 class="text-center"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Ofertas Dísponíveis</h3>
+			<h3 class="text-center"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> TCCs Dísponíveis</h3>
 		</div>
 		</div>
 		<hr></hr>
@@ -24,7 +24,7 @@
 		<ui:fragment rendered="#{empty alunoBean.ofertasDisponiveis}">
 					<div class="row">
 						<div class="alert alert-info" role="alert">
-						<div class="text-center">Nenhuma oferta encontrada!</div>
+						<div class="text-center">Nenhum TCC encontrado!</div>
 					</div>
 					</div>
 		</ui:fragment>
@@ -45,35 +45,25 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Empresa"/>
+						<h:outputText value="Nome do Professor"/>
 					</f:facet>
-					#{oferta.empresa.nome}
+					#{oferta.professor.nome}
 				</h:column>
 				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Ativ. Principal"/>
+						<h:outputText value="Titulo do TCC"/>
 					</f:facet>
-					#{oferta.atividadePrincipal}
+					#{oferta.titulo}
 				</h:column>
 				
 				<h:column headerClass="teste">
 					<f:facet name="header">
-						<h:outputText value="CH Semanal"/>
+						<h:outputText value="Descricao do TCC"/>
 					</f:facet>
-					#{oferta.chSemanal}
+					#{oferta.descricao}
 				</h:column>
 				
-				<h:column headerClass="teste">
-					<f:facet name="header">
-						<h:outputText value="Valor Bolsa"/>
-						
-					</f:facet>
-					
-					
-					
-					#{oferta.valorBolsa}
-				</h:column>
 			  	
 			</h:dataTable>
 		</h:form>

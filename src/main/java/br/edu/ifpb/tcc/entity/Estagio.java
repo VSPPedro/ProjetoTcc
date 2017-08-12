@@ -41,6 +41,12 @@ public class Estagio {
 	@Column(name="DATA_INICIO")
 	private Date dataInicio;
 	
+	@Column(name = "DESCRICAO")
+	private String descricao;
+	
+	@Column(name = "TITULO")
+	private String titulo;
+	
 	@Column(name="ST_TCC")
 	@Enumerated(EnumType.STRING) 
 	private StatusEstagio status = StatusEstagio.PENDENTE_DE_APROVACAO;
@@ -88,6 +94,22 @@ public class Estagio {
 		this.status = status;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+  
 	
 
 	

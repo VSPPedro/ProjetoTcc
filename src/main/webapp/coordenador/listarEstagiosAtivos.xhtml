@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center">
-						<i class="glyphicon glyphicon-warning-sign"></i> Estágios Ativos
+						<i class="glyphicon glyphicon-warning-sign"></i> TCCs Ativos
 					</h3>
 					<hr />
 				</div>
@@ -28,7 +28,7 @@
 			<div class="row">
 				<div class="container">
 						<ui:fragment rendered="#{empty coordenadorBean.estagios}">
-							<h3 class="text-center">Sem estágios ativos</h3>
+							<h3 class="text-center">Sem Tccs ativos</h3>
 						</ui:fragment>
 						<h:form>
 							<h:dataTable value="#{coordenadorBean.estagios}" var="e" rendered="#{not empty coordenadorBean.estagios}" 
@@ -40,32 +40,14 @@
 									<i class="glyphicon glyphicon-menu-right"></i>
 								</h:column>
 								<h:column>
-									<f:facet name="header">Estagiário</f:facet>
+									<f:facet name="header">Concluinte</f:facet>
 									#{e.aluno.nome}
 								</h:column>
 								<h:column>
-									<f:facet name="header">Empresa</f:facet>
-									#{e.empresa.nome}
-								</h:column>
-								<h:column>
-									<f:facet name="header">Atividade Principal</f:facet>
-									#{e.atividadePrincipal}
+									<f:facet name="header">Professor Orientador</f:facet>
+									#{e.professor.nome}
 								</h:column>
 								
-								<h:column>
-									<f:facet name="header">Valor Bolsa</f:facet>
-									<h:outputText value="#{e.valorBolsa}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-								</h:column>
-								
-								<h:column>
-									<f:facet name="header">Valor Transporte</f:facet>
-									<h:outputText value="#{e.valorTransporte}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-								</h:column>
-								
-								<h:column>
-									<f:facet name="header">Valor Alimentação</f:facet>
-									<h:outputText value="#{e.valorAlimentacao}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-								</h:column>
 								
 								<h:column>
 									<f:facet name="header">Ações</f:facet>

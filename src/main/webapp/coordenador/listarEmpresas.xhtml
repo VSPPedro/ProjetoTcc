@@ -8,7 +8,7 @@
 	template="/templating/template.xhtml">
 	
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{coordenadorBean.listarEmpresas}"/>
+		<f:event type="preRenderView" listener="#{coordenadorBean.listarProfessores}"/>
 	</f:metadata>
 
 	<ui:define name="tbody">
@@ -16,7 +16,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center">
-						<i class="glyphicon glyphicon-tower"></i> Empresas
+						<i class="glyphicon glyphicon-tower"></i> Professores
 					</h3>
 					<hr />
 				</div>
@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="container">
 					<h:form>
-					<h:dataTable value="#{coordenadorBean.empresas}" var="e"
+					<h:dataTable value="#{coordenadorBean.professores}" var="e"
 								class="table table-striped table-hover"
 								headerClass="background-color: #34e89e; color: #fff;">
 						<h:column>
@@ -44,26 +44,18 @@
 							#{e.nome}
 						</h:column>
 						<h:column>
-							<f:facet name="header">Endereço</f:facet>
-							#{e.endereco.rua }
-						</h:column>
-						<h:column>
-							<f:facet name="header">CNPJ</f:facet>
-							#{e.cnpj }
-						</h:column>
-						<h:column>
-							<f:facet name="header">Atividade Principal</f:facet>
-							#{e.atividadePrincipal }
+							<f:facet name="header">Telefone</f:facet>
+							#{e.telefone }
 						</h:column>
 						<h:column>
 							<f:facet name="header">Ações</f:facet>
 							<ui:fragment rendered="#{e.ativa eq true}">
-								<h:commandLink actionListener="#{coordenadorBean.bloquearEmpresa(e)}" class="btn btn-danger">
+								<h:commandLink actionListener="#{coordenadorBean.bloquearProfessor(e)}" class="btn btn-danger">
 									Bloquear
 								</h:commandLink>
 							</ui:fragment>
 							<ui:fragment rendered="#{e.ativa eq false}">
-								<h:commandLink actionListener="#{coordenadorBean.desbloquearEmpresa(e)}" class="btn btn-success">
+								<h:commandLink actionListener="#{coordenadorBean.desbloquearProfessor(e)}" class="btn btn-success">
 									Desbloquear
 								</h:commandLink>
 							</ui:fragment>

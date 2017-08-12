@@ -17,7 +17,7 @@
 	    
 	    	<div class="row">
 		    	<div class="col-md-12 text-center">
-		    		<h3 class="text-center"><i class="glyphicon glyphicon-pencil" style="margin-right: 5px;"></i> Minhas Inscrições</h3>
+		    		<h3 class="text-center"><i class="glyphicon glyphicon-pencil" style="margin-right: 5px;"></i> Minhas Inscrições em TCCs</h3>
 		    		
 		    		
 		    		
@@ -30,7 +30,7 @@
 			<ui:fragment rendered="#{empty alunoBean.ofertas}">
 					<div class="row">
 					<div class="alert alert-info" role="alert">
-						<div class="text-center">Nenhuma oferta encontrada!</div>
+						<div class="text-center">Nenhuma Tema encontrado!</div>
 					</div>
 						
 					</div>
@@ -53,23 +53,23 @@
 				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Ativ. Principal"/>
+						<h:outputText value="Nome do Orientador"/>
 					</f:facet>
-					#{oferta.oferta.atividadePrincipal}
+					#{oferta.oferta.professor.nome}
 				</h:column>
 				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="CH Semanal"/>
+						<h:outputText value="Descricao do TCC"/>
 					</f:facet>
-					#{oferta.oferta.chSemanal}
+					#{oferta.oferta.descricao}
 				</h:column>
 				
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="Valor Bolsa"/>
+						<h:outputText value="Titulo do TCC"/>
 					</f:facet>
-					#{oferta.oferta.valorBolsa}
+					#{oferta.oferta.titulo}
 				</h:column>
 			  	
 			</h:dataTable>

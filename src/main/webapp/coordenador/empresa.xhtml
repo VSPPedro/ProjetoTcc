@@ -6,18 +6,20 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	template="/templating/template.xhtml">
-	
+
 	<f:metadata>
-		<f:viewParam name="id" value="#{coordenadorBean.id}"/>
-		<f:event type="preRenderView" listener="#{coordenadorBean.selecionarEmpresa}"/>
+		<f:viewParam name="id" value="#{coordenadorBean.id}" />
+		<f:event type="preRenderView"
+			listener="#{coordenadorBean.selecionarProfessor}" />
 	</f:metadata>
-	
+
 	<ui:define name="tbody">
 		<div class="container main">
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center">
-						<i class="glyphicon glyphicon-tower"></i> #{coordenadorBean.empresa.nome }
+						<i class="glyphicon glyphicon-tower"></i>
+						#{coordenadorBean.professor.nome }
 					</h3>
 					<hr />
 				</div>
@@ -26,48 +28,47 @@
 				<div class="container">
 					<div class="col-md-12">
 						<h:form>
-							<h:link outcome="/coordenador/listarEmpresas" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-arrow-left"></i> Voltar</h:link>
-							<h:link outcome="/coordenador/editarEmpresa?id=#{coordenadorBean.empresa.id}" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-cog"></i> Editar</h:link>
-			
-							<h:commandLink action="#{coordenadorBean.desbloquearEmpresa(coordenadorBean.empresa)}" class="btn btn-success btn-sm" rendered="#{coordenadorBean.empresa.ativa eq false}">
+							<h:link outcome="/coordenador/listarEmpresas"
+								class="btn btn-default btn-sm">
+								<i class="glyphicon glyphicon-arrow-left"></i> Voltar</h:link>
+							<h:link
+								outcome="/coordenador/editarEmpresa?id=#{coordenadorBean.professor.id}"
+								class="btn btn-default btn-sm">
+								<i class="glyphicon glyphicon-cog"></i> Editar</h:link>
+
+							<h:commandLink
+								action="#{coordenadorBean.desbloquearProfessor(coordenadorBean.professor)}"
+								class="btn btn-success btn-sm"
+								rendered="#{coordenadorBean.professor.ativa eq false}">
 								<i class="glyphicon glyphicon-ban-circle"></i> 
 									Desbloquear
 							</h:commandLink>
-							
-							<h:commandLink action="#{coordenadorBean.bloquearEmpresa(coordenadorBean.empresa)}" class="btn btn-danger btn-sm" rendered="#{coordenadorBean.empresa.ativa eq true}">
+
+							<h:commandLink
+								action="#{coordenadorBean.bloquearProfessor(coordenadorBean.professor)}"
+								class="btn btn-danger btn-sm"
+								rendered="#{coordenadorBean.professor.ativa eq true}">
 								<i class="glyphicon glyphicon-ok-circle"></i> 
 									Bloquear
 							</h:commandLink>
 						</h:form>
 					</div>
-					
+
 					<hr />
-					
-					<h:dataTable value="#{coordenadorBean.empresa}" var="e"
-								class="table table-striped table-hover"
-								headerClass="background-color: #34e89e; color: #fff;">
-						<h:column>
-							<f:facet name="header"></f:facet>
-							<i class="glyphicon glyphicon-menu-right"></i>
-						</h:column>
+
+					<h:dataTable value="#{coordenadorBean.professor}" var="e"
+						class="table table-striped table-hover"
+						headerClass="background-color: #34e89e; color: #fff;">
 						<h:column>
 							<f:facet name="header">Nome</f:facet>
-							#{e.nome }
+							#{e.nome}
 						</h:column>
 						<h:column>
-							<f:facet name="header">Endereço</f:facet>
-							#{e.endereco.rua }
-						</h:column>
-						<h:column>
-							<f:facet name="header">CNPJ</f:facet>
-							#{e.cnpj }
-						</h:column>
-						<h:column>
-							<f:facet name="header">Atividade Principal</f:facet>
-							#{e.atividadePrincipal }
+							<f:facet name="header">Telefone</f:facet>
+							#{e.telefone }
 						</h:column>
 					</h:dataTable>
-					
+
 				</div>
 			</div>
 		</div>

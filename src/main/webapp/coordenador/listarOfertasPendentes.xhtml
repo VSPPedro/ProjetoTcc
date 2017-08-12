@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center">
-						<i class="glyphicon glyphicon-warning-sign"></i> Ofertas Pendentes
+						<i class="glyphicon glyphicon-warning-sign"></i> Temas Pendentes
 					</h3>
 					<hr />
 				</div>
@@ -28,7 +28,7 @@
 			<div class="row">
 				<div class="container">
 						<ui:fragment rendered="#{empty coordenadorBean.ofertas}">
-							<h3 class="text-center">Sem ofertas pendentes</h3>
+							<h3 class="text-center">Sem Temas pendentes</h3>
 						</ui:fragment>
 						<h:form>
 							<h:dataTable value="#{coordenadorBean.ofertas}" var="o" rendered="#{not empty coordenadorBean.ofertas}" 
@@ -40,31 +40,19 @@
 									<i class="glyphicon glyphicon-menu-right"></i>
 								</h:column>
 								<h:column>
-									<f:facet name="header">Empresa</f:facet>
-									#{o.empresa.nome}
+									<f:facet name="header">Professor</f:facet>
+									#{o.professor.nome}
 								</h:column>
 								<h:column>
-									<f:facet name="header">Atividade Principal</f:facet>
-									#{o.atividadePrincipal}
+									<f:facet name="header">Titulo</f:facet>
+									#{o.titulo}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Descrição</f:facet>
+									#{o.descricao}
 								</h:column>
 								
-								<h:column>
-									<f:facet name="header">Valor Bolsa</f:facet>
-									<h:outputText value="#{o.valorBolsa}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-									
-								</h:column>
-								
-								<h:column>
-									<f:facet name="header">Valor Transporte</f:facet>
-									<h:outputText value="#{o.valorTransporte}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-									
-								</h:column>
-								
-								<h:column>
-									<f:facet name="header">Valor Alimentação</f:facet>
-									<h:outputText value="#{o.valorAlimentacao}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-									
-								</h:column>
+						
 								
 								<h:column>
 									<f:facet name="header">Ações</f:facet>

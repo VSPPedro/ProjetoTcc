@@ -37,24 +37,13 @@
 							<i class="glyphicon glyphicon-menu-right"></i>
 						</h:column>
 						<h:column>
-							<f:facet name="header">Estagiário</f:facet>
+							<f:facet name="header">Concluinte</f:facet>
 							<h:link outcome="/empresa/estagio?id=#{e.id}">#{e.aluno.nome}</h:link>
 							
 						</h:column>
-						<h:column>
-							<f:facet name="header">Ativ. Principal</f:facet>
-							#{e.atividadePrincipal}
-							
-						</h:column>
-						<h:column>
-							<f:facet name="header">CH Semanal</f:facet>
-							#{e.chSemanal }
-						</h:column>
-						<h:column>
-							<f:facet name="header">Valor Bolsa</f:facet>
-							
-							<h:outputText value="#{e.valorBolsa }"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-						</h:column>
+
+
+					
 						<h:column>
 							<f:facet name="header">Status</f:facet>
 							

@@ -42,6 +42,8 @@ public class Oferta {
 	@JoinColumn(name="PROF_ID")
 	private Professor professor;
 	
+
+	
 //	@ManyToMany(cascade = CascadeType.ALL)
 //	@JoinTable(name="TB_OFERTA_ALUNO",
 //    joinColumns={@JoinColumn(name="OFERTA_ID")},

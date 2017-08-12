@@ -50,6 +50,8 @@ public class EstagioDAO extends GenericDAO<Estagio, Integer> {
 			e.setAluno(oa.getAluno());
 			e.setDataInicio(new Date());
 		    e.setProfessor(oferta.getProfessor());
+		    e.setDescricao(oferta.getDescricao());
+		    e.setTitulo(oferta.getTitulo());
 
 			estagios.add(e);
 			this.insert(e);

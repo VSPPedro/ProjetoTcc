@@ -62,12 +62,12 @@
 					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'A'}">
 					       			<ul class="nav navbar-nav navbar-left">
 								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Ofertas de Estágio <span class="caret"></span></a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Listas de Temas de TCCs <span class="caret"></span></a>
 								          <ul class="dropdown-menu">
 
-								          	<li> <h:commandLink action="#{alunoBean.listarMinhasOfertas}" style="margin-right:2px;"><i class="glyphicon glyphicon-tags" ></i> Minhas inscrições</h:commandLink> </li>
+								          	<li> <h:commandLink action="#{alunoBean.listarMinhasOfertas}" style="margin-right:2px;"><i class="glyphicon glyphicon-tags" ></i> Minhas inscrições em TCCs</h:commandLink> </li>
 								            
-								            <li> <h:commandLink action="#{alunoBean.listarOfertasDisponiveis}" style="margin-right:2px;"><i class="glyphicon glyphicon-eye-open" ></i> Ver ofertas de estágio disponíveis</h:commandLink> </li>
+								            <li> <h:commandLink action="#{alunoBean.listarOfertasDisponiveis}" style="margin-right:2px;"><i class="glyphicon glyphicon-eye-open" ></i> Ver listas de Temas disponíveis</h:commandLink> </li>
 
 								          </ul>
 								        </li>
@@ -77,31 +77,31 @@
 					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'C'}">
 					       			<ul class="nav navbar-nav navbar-left">
 								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tower"></i> Empresa <span class="caret"></span></a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tower"></i> Professor <span class="caret"></span></a>
 								          <ul class="dropdown-menu">
 
 								        
-								            <li><h:link outcome="/coordenador/listarEmpresas"><i class="glyphicon glyphicon-th-list"></i> Mostrar empresas</h:link></li>
+								            <li><h:link outcome="/coordenador/listarEmpresas"><i class="glyphicon glyphicon-th-list"></i> Mostrar professores</h:link></li>
 
 								          </ul>
 								        </li>
 								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Ofertas de estágio <span class="caret"></span></a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Listas de Temas de TCCs <span class="caret"></span></a>
 								          <ul class="dropdown-menu">
 	
 
-								            <li><h:link outcome="/coordenador/listarOfertasPendentes"><i class="glyphicon glyphicon-eye-open"></i> Ver ofertas pendentes</h:link></li>
+								            <li><h:link outcome="/coordenador/listarOfertasPendentes"><i class="glyphicon glyphicon-eye-open"></i> Ver Temas de TCCs pendentes</h:link></li>
 								            <li><h:link outcome="/coordenador/listarAlunosSelecionados"><i class="glyphicon glyphicon-eye-open"></i> Ver Alunos selecionados</h:link></li>
 
 	
 								          </ul>
 								        </li>
 								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Estágios <span class="caret"></span></a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> TCCs <span class="caret"></span></a>
 								          <ul class="dropdown-menu">
 	
-								            <li><h:link outcome="/coordenador/listarEstagiosPendentes"><i class="glyphicon glyphicon-eye-open"></i> Ver estágios pendentes</h:link></li>
-								            <li><h:link outcome="/coordenador/listarEstagiosAtivos"><i class="glyphicon glyphicon-eye-open"></i> Ver estágios ativos</h:link></li>
+								            <li><h:link outcome="/coordenador/listarEstagiosPendentes"><i class="glyphicon glyphicon-eye-open"></i> Ver TCCs pendentes</h:link></li>
+								            <li><h:link outcome="/coordenador/listarEstagiosAtivos"><i class="glyphicon glyphicon-eye-open"></i> Ver TCCS finalizados</h:link></li>
 								            
 	
 								          </ul>

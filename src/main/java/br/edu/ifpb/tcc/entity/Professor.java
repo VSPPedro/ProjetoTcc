@@ -22,7 +22,7 @@ import javax.persistence.Table;
 public class Professor extends Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "ATIVA_EMPRESA")
+	@Column(name = "ATIVO_PROF")
 	private boolean ativa = true;
 	@Column(name = "NOME_PROF")
 	private String nome;

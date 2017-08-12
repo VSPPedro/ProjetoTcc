@@ -8,9 +8,10 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.PersistenceException;
 
-
+import br.edu.ifpb.tcc.dao.AlunoDAO;
 import br.edu.ifpb.tcc.dao.OfertaAlunoDAO;
 import br.edu.ifpb.tcc.dao.ProfessorDAO;
+import br.edu.ifpb.tcc.entity.Aluno;
 import br.edu.ifpb.tcc.entity.Coordenador;
 import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.entity.Estagio;
@@ -40,12 +41,20 @@ public class CoordenadorBean extends GenericBean{
 	
 	private Coordenador coordenador = new Coordenador();
 	
+	private Aluno aluno = new Aluno();
+	
+	private List<Aluno> alunos = new ArrayList<Aluno>();
+	
 	@ManagedProperty("#{loginBean}")
 	private LoginBean loginBean;
 	
 	public void selecionarProfessor(){
 		ProfessorDAO prodao = new ProfessorDAO();
 		this.professor = prodao.find(this.id);
+	}
+	public void selecionarAluno(){
+		AlunoDAO aludao = new AlunoDAO();
+		this.aluno = aludao.find(this.id);
 	}
 	
 	public String cadastrarCoordenador(){
@@ -78,6 +87,11 @@ public class CoordenadorBean extends GenericBean{
 	public void listarProfessores(){
 		ProfessorDAO profdao = new ProfessorDAO();
 		this.professores = profdao.findAll();
+	}
+	
+	public void listarAlunos(){
+		AlunoDAO aludao = new AlunoDAO();
+		this.alunos = aludao.findAll();
 	}
 	
 	public void listarOfertasPendentes(){
@@ -128,6 +142,17 @@ public class CoordenadorBean extends GenericBean{
 		ProfessorController ctrl = new ProfessorController();
 		ctrl.desbloquearprofessor(professor.getId());
 	}
+	
+	public void bloquearAluno(Aluno aluno){
+		AlunoController ctrl = new AlunoController();
+		ctrl.bloquearaluno(aluno.getId());
+	}
+	
+	public void desbloquearAluno(Aluno aluno){
+		AlunoController ctrl = new AlunoController();
+		ctrl.desbloquearaluno(aluno.getId());
+	}
+	
 	
 	public void listarAlunosSelecionados(){
 		OfertaAlunoDAO ofaldao = new OfertaAlunoDAO();
@@ -200,6 +225,18 @@ public class CoordenadorBean extends GenericBean{
 
 	public void setCoordenador(Coordenador coordenador) {
 		this.coordenador = coordenador;
+	}
+	public Aluno getAluno() {
+		return aluno;
+	}
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 	
 	

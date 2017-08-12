@@ -8,6 +8,7 @@ import javax.persistence.Query;
 
 import br.edu.ifpb.tcc.entity.Aluno;
 import br.edu.ifpb.tcc.entity.Oferta;
+import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.facade.OfertaController;
 
 public class AlunoDAO extends GenericDAO<Aluno, Integer> {
@@ -36,5 +37,23 @@ public class AlunoDAO extends GenericDAO<Aluno, Integer> {
 //		Query q = this.getEntityManager().createQuery("select a from Aluno a where a.");
 //		
 //	}
-	
+	public Aluno bloquearAluno(int id) {
+		Aluno alu = this.find(id);
+		this.beginTransaction();
+		alu.setAtiva(false);
+		this.update(alu);
+		this.commit();
+		return alu;
+		
+	}
+	public Aluno desbloquearAluno(int id) {
+		Aluno alu = this.find(id);
+		this.beginTransaction();
+		alu.setAtiva(true);
+		this.update(alu);
+		this.commit();
+		return alu;
+		
+	}
+
 }

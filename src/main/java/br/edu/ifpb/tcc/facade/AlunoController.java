@@ -9,10 +9,12 @@ import br.edu.ifpb.tcc.dao.AlunoDAO;
 import br.edu.ifpb.tcc.dao.EstagioDAO;
 import br.edu.ifpb.tcc.dao.OfertaAlunoDAO;
 import br.edu.ifpb.tcc.dao.PersistenceUtil;
+import br.edu.ifpb.tcc.dao.ProfessorDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
 import br.edu.ifpb.tcc.entity.Curso;
 import br.edu.ifpb.tcc.entity.Estagio;
 import br.edu.ifpb.tcc.entity.Pessoa;
+import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.util.PasswordUtil;
 
 public class AlunoController {
@@ -55,7 +57,16 @@ public class AlunoController {
 	}
 
 	
-
+	public Aluno bloquearaluno(int id) {
+		AlunoDAO dao = new AlunoDAO(PersistenceUtil.getCurrentEntityManager());
+		Aluno alu = dao.bloquearAluno(id);
+		return alu;
+	}
+	public Aluno desbloquearaluno(int id) {
+		AlunoDAO dao = new AlunoDAO(PersistenceUtil.getCurrentEntityManager());
+		Aluno alu = dao.desbloquearAluno(id);
+		return alu;
+	}
 
 	
 //	public Resultado remove(Map<String, String[]> parametros){

@@ -13,6 +13,10 @@ import javax.persistence.*;
 public class Aluno extends Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	
+	@Column(name = "ATIVO_AlUNO")
+	private boolean ativa = true;
+	
 	@Column(name = "MAT_ALUNO")
 	private String matricula;
 	
@@ -71,6 +75,14 @@ public class Aluno extends Pessoa implements Serializable {
 
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
+	}
+
+	public boolean isAtiva() {
+		return ativa;
+	}
+
+	public void setAtiva(boolean ativa) {
+		this.ativa = ativa;
 	}
 
 	

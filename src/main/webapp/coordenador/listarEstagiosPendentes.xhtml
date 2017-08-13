@@ -10,7 +10,7 @@
 
 	<f:metadata>
 		<f:event type="preRenderView"
-			listener="#{coordenadorBean.listarEstagiosPendentes}" />
+			listener="#{coordenadorBean.listarTccsPendentes}" />
 	</f:metadata>
 
 	<ui:define name="tbody">
@@ -30,12 +30,12 @@
 			</div>
 			<div class="row">
 				<div class="container">
-					<ui:fragment rendered="#{empty coordenadorBean.estagios}">
+					<ui:fragment rendered="#{empty coordenadorBean.tccs}">
 						<h3 class="text-center">Sem TCCs pendentes</h3>
 					</ui:fragment>
 					<h:form>
-						<h:dataTable value="#{coordenadorBean.estagios}" var="e"
-							rendered="#{not empty coordenadorBean.estagios}"
+						<h:dataTable value="#{coordenadorBean.tccs}" var="t"
+							rendered="#{not empty coordenadorBean.tccs}"
 							class="table table-striped table-hover"
 							headerClass="background-color: #34e89e; color: #fff;">
 
@@ -46,19 +46,19 @@
 
 							<h:column>
 								<f:facet name="header">Concluinte</f:facet>
-									#{e.aluno.nome}
+									#{t.aluno.nome}
 								</h:column>   
 							<h:column>
 								<f:facet name="header">Matrícula</f:facet>
-									#{e.aluno.matricula}
+									#{t.aluno.matricula}
 								</h:column>
 							<h:column>
 								<f:facet name="header">Matrícula</f:facet>
-									#{e.aluno.matricula}
+									#{t.aluno.matricula}
 								</h:column>
 							<h:column>
 								<f:facet name="header">Telefone</f:facet>
-									#{e.aluno.telefone}
+									#{t.aluno.telefone}
 								</h:column>
 						 
                       
@@ -67,10 +67,10 @@
 							<h:column>
 								<f:facet name="header">Ações</f:facet>
 								<h:commandButton
-									actionListener="#{coordenadorBean.aprovarEstagio(e)}"
+									actionListener="#{coordenadorBean.aprovarTcc(t)}"
 									class="btn btn-success btn-sm" value="Aprovar" />
 								<h:commandButton
-									actionListener="#{coordenadorBean.negarEstagio(e)}"
+									actionListener="#{coordenadorBean.negarTcc(t)}"
 									class="btn btn-danger btn-sm" value="Negar" />
 							</h:column>
 

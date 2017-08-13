@@ -9,7 +9,7 @@
 	template="/templating/template.xhtml">
 	
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{coordenadorBean.listarEstagiosAtivos}"/>
+		<f:event type="preRenderView" listener="#{coordenadorBean.listarTccsAtivos}"/>
 	</f:metadata>
 	
 	<ui:define name="tbody">
@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center">
-						<i class="glyphicon glyphicon-warning-sign"></i> TCCs Ativos
+						<i class="glyphicon glyphicon-warning-sign"></i> TCCs Finalizados
 					</h3>
 					<hr />
 				</div>
@@ -27,11 +27,11 @@
 			</div>
 			<div class="row">
 				<div class="container">
-						<ui:fragment rendered="#{empty coordenadorBean.estagios}">
+						<ui:fragment rendered="#{empty coordenadorBean.tccs}">
 							<h3 class="text-center">Sem Tccs ativos</h3>
 						</ui:fragment>
 						<h:form>
-							<h:dataTable value="#{coordenadorBean.estagios}" var="e" rendered="#{not empty coordenadorBean.estagios}" 
+							<h:dataTable value="#{coordenadorBean.tccs}" var="t" rendered="#{not empty coordenadorBean.tccs}" 
 										class="table table-striped table-hover"
 										headerClass="background-color: #34e89e; color: #fff;">
 							
@@ -41,17 +41,21 @@
 								</h:column>
 								<h:column>
 									<f:facet name="header">Concluinte</f:facet>
-									#{e.aluno.nome}
+									#{t.aluno.nome}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Matricula</f:facet>
+									#{t.aluno.matricula}
 								</h:column>
 								<h:column>
 									<f:facet name="header">Professor Orientador</f:facet>
-									#{e.professor.nome}
+									#{t.professor.nome}
 								</h:column>
 								
 								
 								<h:column>
 									<f:facet name="header">Ações</f:facet>
-									<h:commandButton actionListener="#{coordenadorBean.fecharEstagio(e)}" class="btn btn-danger btn-sm" value="Fechar" />
+									<h:commandButton actionListener="#{coordenadorBean.fecharTcc(t)}" class="btn btn-danger btn-sm" value="Fechar" />
 								</h:column>
 							
 							</h:dataTable>

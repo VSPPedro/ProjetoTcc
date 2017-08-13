@@ -1,6 +1,6 @@
 package br.edu.ifpb.tcc.entity;
 
-public enum StatusEstagio {
+public enum StatusTcc {
 	PENDENTE_DE_APROVACAO("Aguardando aprovação"),
 	FECHADO("Fechado"),
 	ATIVO("Ativo"),
@@ -9,7 +9,7 @@ public enum StatusEstagio {
 	
 	private String nome;
 	
-	StatusEstagio(String nome) {
+	StatusTcc(String nome) {
 		this.nome = nome;
 	}
 

@@ -14,13 +14,13 @@ import br.edu.ifpb.tcc.dao.ProfessorDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
 import br.edu.ifpb.tcc.entity.Coordenador;
 import br.edu.ifpb.tcc.entity.Professor;
-import br.edu.ifpb.tcc.entity.Estagio;
+import br.edu.ifpb.tcc.entity.Tcc;
 import br.edu.ifpb.tcc.entity.Oferta;
 import br.edu.ifpb.tcc.entity.OfertaAluno;
 import br.edu.ifpb.tcc.facade.AlunoController;
 import br.edu.ifpb.tcc.facade.CoordenadorController;
 import br.edu.ifpb.tcc.facade.ProfessorController;
-import br.edu.ifpb.tcc.facade.EstagioController;
+import br.edu.ifpb.tcc.facade.TccController;
 import br.edu.ifpb.tcc.facade.OfertaController;
 
 @ManagedBean(name="coordenadorBean")
@@ -35,7 +35,7 @@ public class CoordenadorBean extends GenericBean{
 	
 	private List<OfertaAluno> ofertaalunos = new ArrayList<OfertaAluno>();
 	
-	private List<Estagio> estagios = new ArrayList<Estagio>();
+	private List<Tcc> tccs = new ArrayList<Tcc>();
 
 	private Professor professor = new Professor();
 	
@@ -99,14 +99,14 @@ public class CoordenadorBean extends GenericBean{
 		this.ofertas = ctrl.buscarPendentes();
 	}
 	
-	public void listarEstagiosPendentes(){
-		EstagioController ctrl = new EstagioController();
-		this.estagios = ctrl.getEstagiosPendentes();
+	public void listarTccsPendentes(){
+		TccController ctrl = new TccController();
+		this.tccs = ctrl.getTccsPendentes();
 	}	
 	
-	public void listarEstagiosAtivos(){
-		EstagioController ctrl = new EstagioController();
-		this.estagios = ctrl.getEstagiosAtivos();
+	public void listarTccsAtivos(){
+		TccController ctrl = new TccController();
+		this.tccs = ctrl.getTccsAtivos();
 	}
 	
 	public void aprovarOferta(Oferta oferta){
@@ -115,22 +115,22 @@ public class CoordenadorBean extends GenericBean{
 		this.addSuccessMessage("Oferta aprovada com sucesso!");
 	}
 	
-	public void aprovarEstagio(Estagio estagio){
-		EstagioController ctrl = new EstagioController();
-		ctrl.aprovarEstagio(estagio.getId());
-		this.addSuccessMessage("Estagio aprovado com sucesso!");
+	public void aprovarTcc(Tcc tcc){
+		TccController ctrl = new TccController();
+		ctrl.aprovarTcc(tcc.getId());
+		this.addSuccessMessage("Tcc aprovado com sucesso!");
 	}
 	
-	public void negarEstagio(Estagio estagio){
-		EstagioController ctrl = new EstagioController();
-		ctrl.negarEstagio(estagio.getId());
-		this.addSuccessMessage("Estagio foi negado com sucesso!");
+	public void negarTcc(Tcc tcc){
+		TccController ctrl = new TccController();
+		ctrl.negarTcc(tcc.getId());
+		this.addSuccessMessage("Tcc foi negado com sucesso!");
 	}
 	
-	public void fecharEstagio(Estagio estagio){
-		EstagioController ctrl = new EstagioController();
-		ctrl.fecharEstagio(estagio.getId());
-		this.addSuccessMessage("Estagio foi finalizado com sucesso!");
+	public void fecharTcc(Tcc tcc){
+		TccController ctrl = new TccController();
+		ctrl.fecharTcc(tcc.getId());
+		this.addSuccessMessage("Tcc foi finalizado com sucesso!");
 	}
 	
 	public void bloquearProfessor(Professor professor){
@@ -161,14 +161,14 @@ public class CoordenadorBean extends GenericBean{
 	
 	
 	
-	public List<Estagio> getEstagios() {
-		return estagios;
-	}
 
-	public void setEstagios(List<Estagio> estagios) {
-		this.estagios = estagios;
-	}
 
+	public List<Tcc> getTccs() {
+		return tccs;
+	}
+	public void setTccs(List<Tcc> tccs) {
+		this.tccs = tccs;
+	}
 	public List<OfertaAluno> getOfertaalunos() {
 		return ofertaalunos;
 	}

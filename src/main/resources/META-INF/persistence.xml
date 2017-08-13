@@ -6,7 +6,6 @@
 	<persistence-unit name="tcc" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>br.edu.ifpb.tcc.entity.Oferta</class>
-		<class>br.edu.ifpb.tcc.entity.Estagio</class>
 		<class>br.edu.ifpb.tcc.entity.Aluno</class>
 		<class>br.edu.ifpb.tcc.entity.Curso</class>
 		<class>br.edu.ifpb.tcc.entity.OfertaAluno</class>
@@ -14,6 +13,7 @@
 		<class>br.edu.ifpb.tcc.entity.Coordenador</class>
 		<class>br.edu.ifpb.tcc.entity.Pessoa</class>
 		<class>br.edu.ifpb.tcc.entity.Professor</class>
+		<class>br.edu.ifpb.tcc.entity.Tcc</class>
 
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

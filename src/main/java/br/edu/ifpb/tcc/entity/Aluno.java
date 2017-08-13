@@ -29,7 +29,7 @@ public class Aluno extends Pessoa implements Serializable {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tcc_id")
-	private Estagio estagio;
+	private Tcc tcc;
 
     
 	
@@ -60,14 +60,14 @@ public class Aluno extends Pessoa implements Serializable {
 
 
 
-	public Estagio getEstagio() {
-		return estagio;
+
+	public Tcc getTcc() {
+		return tcc;
 	}
 
-	public void setEstagio(Estagio estagio) {
-		this.estagio = estagio;
+	public void setTcc(Tcc tcc) {
+		this.tcc = tcc;
 	}
-
 
 	public String getMatricula() {
 		return matricula;

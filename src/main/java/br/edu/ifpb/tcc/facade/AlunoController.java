@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 import br.edu.ifpb.tcc.dao.AlunoDAO;
-import br.edu.ifpb.tcc.dao.EstagioDAO;
+import br.edu.ifpb.tcc.dao.TccDAO;
 import br.edu.ifpb.tcc.dao.OfertaAlunoDAO;
 import br.edu.ifpb.tcc.dao.PersistenceUtil;
 import br.edu.ifpb.tcc.dao.ProfessorDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
 import br.edu.ifpb.tcc.entity.Curso;
-import br.edu.ifpb.tcc.entity.Estagio;
+import br.edu.ifpb.tcc.entity.Tcc;
 import br.edu.ifpb.tcc.entity.Pessoa;
 import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.util.PasswordUtil;

@@ -23,7 +23,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "TB_TCC")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Estagio {
+public class Tcc {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,9 +49,9 @@ public class Estagio {
 	
 	@Column(name="ST_TCC")
 	@Enumerated(EnumType.STRING) 
-	private StatusEstagio status = StatusEstagio.PENDENTE_DE_APROVACAO;
+	private StatusTcc status = StatusTcc.PENDENTE_DE_APROVACAO;
 	
-	public Estagio(){}
+	public Tcc(){}
 
 	public Integer getId() {
 		return id;
@@ -86,13 +86,6 @@ public class Estagio {
 		this.professor = professor;
 	}
 
-	public StatusEstagio getStatus() {
-		return status;
-	}
-
-	public void setStatus(StatusEstagio status) {
-		this.status = status;
-	}
 
 	public String getDescricao() {
 		return descricao;
@@ -108,6 +101,14 @@ public class Estagio {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public StatusTcc getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusTcc status) {
+		this.status = status;
 	}
   
 	

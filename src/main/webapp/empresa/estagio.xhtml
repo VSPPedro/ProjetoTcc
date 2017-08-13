@@ -9,7 +9,7 @@
 	
 	<f:metadata>
 		<f:viewParam name="id" value="#{ProfessorBean.id}"/>
-		<f:event type="preRenderView" listener="#{ProfessorBean.selecionarEstagio}"/>
+		<f:event type="preRenderView" listener="#{ProfessorBean.selecionarTcc}"/>
 	</f:metadata>
 	
 	<ui:define name="tbody">
@@ -19,7 +19,7 @@
 				<div class="col-md-12">
 					<h3 class="text-center">
 						<i class="glyphicon glyphicon-tags" style="margin-right: 5px;"></i>
-						Aluno concluinte: #{ProfessorBean.estagio.aluno.nome}
+						Aluno concluinte: #{ProfessorBean.tcc.aluno.nome}
 					</h3>
 					
 					<hr />
@@ -37,21 +37,21 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-3">
-							<b>Estagiário:</b>
+							<b>Concluinte:</b>
 						</div>
-						<div class="col-md-9">#{ProfessorBean.estagio.aluno.nome}</div>
+						<div class="col-md-9">#{ProfessorBean.tcc.aluno.nome}</div>
 					</div>
 					 <div class="row">
 						<div class="col-md-3">
 							<b>Titulo do TCC:</b>
 						</div>
-						<div class="col-md-9">#{ProfessorBean.estagio.titulo }</div>
+						<div class="col-md-9">#{ProfessorBean.tcc.titulo }</div>
 					</div>
 					 <div class="row">
 						<div class="col-md-3">
 							<b>Descrição do TCC:</b>
 						</div>
-						<div class="col-md-9">#{ProfessorBean.estagio.descricao }</div>
+						<div class="col-md-9">#{ProfessorBean.tcc.descricao }</div>
 					</div>
 					
 <!-- 					<div class="row">
@@ -66,7 +66,7 @@
 					<div class="text-left" style="margin-top: 20px;">
 						<h:form>
 							<h:commandButton actionListener="#{ProfessorBean.fecharInscricoes}" value="Fechar inscrições" class="btn btn-danger btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Aprovado'}"/>
-							<h:commandButton actionListener="#{ProfessorBean.solicitarAprovacaoEstagio}" value="Solicitar aprovação de Estágio" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Finalizado'}"/>
+							<h:commandButton actionListener="#{ProfessorBean.solicitarAprovacaoTcc}" value="Solicitar aprovação de Estágio" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Finalizado'}"/>
 						</h:form>
 					</div>
 				</div>

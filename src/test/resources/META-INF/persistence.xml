@@ -14,7 +14,7 @@
 		<class>br.edu.ifpb.tcc.entity.OfertaAluno</class>
 		<class>br.edu.ifpb.tcc.entity.Curso</class>
 		<class>br.edu.ifpb.tcc.entity.Aluno</class>
-		<class>br.edu.ifpb.tcc.entity.Estagio</class>
+		<class>br.edu.ifpb.tcc.entity.Tcc</class>
 
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

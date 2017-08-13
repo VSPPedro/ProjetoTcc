@@ -109,7 +109,7 @@
 					<div class="text-left" style="margin-top: 20px;">
 						<h:form>
 							<h:commandButton actionListener="#{ProfessorBean.fecharInscricoes}" value="Fechar inscrições" class="btn btn-danger btn-sm" style="margin-right: 5px;" rendered="#{ProfessorBean.oferta.status.nome eq 'Aprovado'}"/>
-							<h:commandButton actionListener="#{ProfessorBean.solicitarAprovacaoEstagio}" value="Solicitar aprovação de Tema" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{ProfessorBean.oferta.status.nome eq 'Finalizado'}"/>
+							<h:commandButton actionListener="#{ProfessorBean.solicitarAprovacaoTcc}" value="Solicitar aprovação de Tema" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{ProfessorBean.oferta.status.nome eq 'Finalizado'}"/>
 						</h:form>
 					</div>
 				</div>

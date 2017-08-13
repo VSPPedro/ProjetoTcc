@@ -8,11 +8,11 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.PersistenceException;
 
-import br.edu.ifpb.tcc.dao.EstagioDAO;
+import br.edu.ifpb.tcc.dao.TccDAO;
 import br.edu.ifpb.tcc.dao.OfertaAlunoDAO;
 import br.edu.ifpb.tcc.dao.OfertaDAO;
 import br.edu.ifpb.tcc.entity.Professor;
-import br.edu.ifpb.tcc.entity.Estagio;
+import br.edu.ifpb.tcc.entity.Tcc;
 import br.edu.ifpb.tcc.entity.Oferta;
 import br.edu.ifpb.tcc.entity.OfertaAluno;
 import br.edu.ifpb.tcc.entity.StatusAlunoOferta;
@@ -27,11 +27,11 @@ public class ProfessorBean extends GenericBean{
 
 	private List<Oferta> ofertas = new ArrayList<Oferta>();
 	
-	private List<Estagio> estagios = new ArrayList<Estagio>();
+	private List<Tcc> tccs = new ArrayList<Tcc>();
 	
 	private Oferta oferta = new Oferta();
 	
-	private Estagio estagio = new Estagio();
+	private Tcc tcc = new Tcc();
 	
 	private Professor professor = new Professor();
 	
@@ -58,9 +58,9 @@ public class ProfessorBean extends GenericBean{
 		return "empresa/mostrarOfertas";
 	}
 	
-	public void listarEstagios(){
-		EstagioDAO edao = new EstagioDAO();
-		this.estagios = edao.findAllFromPessoa(this.loginBean.getPessoa());
+	public void listarTccs(){
+		TccDAO tdao = new TccDAO();
+		this.tccs = tdao.findAllFromPessoa(this.loginBean.getPessoa());
 	}
 	
 	public String cadastrarOferta(){
@@ -84,9 +84,9 @@ public class ProfessorBean extends GenericBean{
 		this.oferta = ofdao.find(this.id);
 	}
 	
-	public void selecionarEstagio(){
-		EstagioDAO edao = new EstagioDAO();
-		this.estagio = edao.find(this.id);
+	public void selecionarTcc(){
+		TccDAO tdao = new TccDAO();
+		this.tcc = tdao.find(this.id);
 	}
 	
 	public String aprovarAluno(OfertaAluno ofal){
@@ -106,30 +106,20 @@ public class ProfessorBean extends GenericBean{
 		this.addSuccessMessage("Esta oferta foi fechada!");
 	}
 	
-	public void solicitarAprovacaoEstagio(){
-		EstagioDAO edao = new EstagioDAO();
-		edao.criarEstagio(this.oferta);
+	public void solicitarAprovacaoTcc(){
+		TccDAO tdao = new TccDAO();
+		tdao.criarTcc(this.oferta);
 		OfertaDAO ofdao = new OfertaDAO();
 		ofdao.concluirOferta(this.oferta.getId());
-		this.addSuccessMessage("Solicitação de Estágio foi enviada para a Coordenação!");
+		this.addSuccessMessage("Solicitação de Tcc foi enviada para a Coordenação!");
 	}
 	
 
-	public Estagio getEstagio() {
-		return estagio;
+	public Tcc getEstagio() {
+		return tcc;
 	}
 
-	public void setEstagio(Estagio estagio) {
-		this.estagio = estagio;
-	}
 
-	public List<Estagio> getEstagios() {
-		return estagios;
-	}
-
-	public void setEstagios(List<Estagio> estagios) {
-		this.estagios = estagios;
-	}
 
 	public Integer getId() {
 		return id;
@@ -177,6 +167,22 @@ public class ProfessorBean extends GenericBean{
 
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
+	}
+
+	public List<Tcc> getTccs() {
+		return tccs;
+	}
+
+	public void setTccs(List<Tcc> tccs) {
+		this.tccs = tccs;
+	}
+
+	public Tcc getTcc() {
+		return tcc;
+	}
+
+	public void setTcc(Tcc tcc) {
+		this.tcc = tcc;
 	}
 
 

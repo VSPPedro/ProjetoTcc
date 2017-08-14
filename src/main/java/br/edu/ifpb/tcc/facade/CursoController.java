@@ -13,15 +13,7 @@ import br.edu.ifpb.tcc.entity.Pessoa;
 public class CursoController {
 	private Curso curso;
 	private List<Mensagem> mensagensErro;
-	
-//	public List<Empresa> consultar(Empresa usuario){
-//		EmpresaDAO dao = new EmpresaDAO();
-//		List<Empresa> empresas = dao.findAllFromUser(usuario);
-//		return empresas;
-//	}
-	
-	
-	
+
 	public CursoController(){}
 	
 	public Resultado cadastrar(Map<String, String[]> parametros, Pessoa pessoa) {
@@ -56,18 +48,12 @@ public class CursoController {
 		String[] nome = parametros.get("nome");
 		String[] ch = parametros.get("ch");
 		
-		System.out.println("PARAMETROS DA CLASSE EMPRESACONTROLLER");
-		System.out.println(parametros.toString());
-		
 		this.curso= new Curso();
 		this.mensagensErro= new ArrayList<Mensagem>();
-		
-//		empresa.setUsuario(usuario);
 		
 		if(id!= null && id.length>0 && !id[0].isEmpty()) {
 			curso.setId(Integer.parseInt(id[0]));
 		}
-		
 		
 		if(nome== null|| nome.length== 0 || nome[0].isEmpty()) {
 			this.mensagensErro.add(new Mensagem("Nome é campo obrigatório!", Categoria.ERRO));

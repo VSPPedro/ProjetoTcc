@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebFilter(filterName = "LoginFilter", urlPatterns = { "/coordenador/*", "/empresa/*", "/aluno/*", "/index.jsf" })
+@WebFilter(filterName = "LoginFilter", urlPatterns = { "/coordenador/*", "/professor/*", "/aluno/*", "/index.jsf" })
 public class LoginFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

@@ -2,7 +2,7 @@ package br.edu.ifpb.tcc.entity;
 
 public enum Perfil {
 	PESSOA("Pessoa"),
-	EMPRESA("Empresa"),
+	PROFESSOR("Professor"),
 	COORDENADOR("Coordenador"),
 	ALUNO("Aluno");
 	

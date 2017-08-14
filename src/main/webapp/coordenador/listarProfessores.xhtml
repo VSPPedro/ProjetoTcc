@@ -33,7 +33,7 @@
 						<h:column>
 							<f:facet name="header"></f:facet>
 							
-							<h:link outcome="/coordenador/empresa?id=#{e.id}" styleClass="btn btn-default">
+							<h:link outcome="/coordenador/professor?id=#{e.id}" styleClass="btn btn-default">
 								
 								<i class="glyphicon glyphicon-plus"></i>
 								
@@ -44,21 +44,28 @@
 							#{e.nome}
 						</h:column>
 						<h:column>
-							<f:facet name="header">Telefone</f:facet>
-							#{e.telefone }
+							<f:facet name="header">Email</f:facet>
+							#{e.email}
 						</h:column>
 						<h:column>
-							<f:facet name="header">Ações</f:facet>
+							<f:facet name="header">Telefone</f:facet>
+							#{e.telefone}
+						</h:column>
+						<h:column>
+							<f:facet name="header">Disponibilidade para banca</f:facet>
+							
 							<ui:fragment rendered="#{e.ativa eq true}">
-								<h:commandLink actionListener="#{coordenadorBean.bloquearProfessor(e)}" class="btn btn-danger">
-									Bloquear
+								<h:commandLink actionListener="#{coordenadorBean.bloquearProfessor(e)}" class="btn btn-success">
+									Disponível
 								</h:commandLink>
 							</ui:fragment>
+							
 							<ui:fragment rendered="#{e.ativa eq false}">
-								<h:commandLink actionListener="#{coordenadorBean.desbloquearProfessor(e)}" class="btn btn-success">
-									Desbloquear
+								<h:commandLink actionListener="#{coordenadorBean.desbloquearProfessor(e)}" class="btn btn-danger">
+									Indisponível
 								</h:commandLink>
 							</ui:fragment>
+							
 						</h:column>
 					</h:dataTable>
 					</h:form>

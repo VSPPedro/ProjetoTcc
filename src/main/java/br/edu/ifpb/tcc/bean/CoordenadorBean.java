@@ -52,6 +52,7 @@ public class CoordenadorBean extends GenericBean{
 		ProfessorDAO prodao = new ProfessorDAO();
 		this.professor = prodao.find(this.id);
 	}
+	
 	public void selecionarAluno(){
 		AlunoDAO aludao = new AlunoDAO();
 		this.aluno = aludao.find(this.id);
@@ -74,7 +75,7 @@ public class CoordenadorBean extends GenericBean{
 			ProfessorController ctrl = new ProfessorController();
 			ctrl.salvar(this.professor);
 			this.addSuccessMessage("Professor salvo com sucesso!");
-			proxView = "/coordenador/listarEmpresas?faces-redirect=true";
+			proxView = "/coordenador/listarProfessores?faces-redirect=true";
 			this.professor = new Professor();
 		} catch (PersistenceException e) {
 			this.addErrorMessage("Erro ao tentar salvar a Professor");
@@ -153,15 +154,10 @@ public class CoordenadorBean extends GenericBean{
 		ctrl.desbloquearaluno(aluno.getId());
 	}
 	
-	
 	public void listarAlunosSelecionados(){
 		OfertaAlunoDAO ofaldao = new OfertaAlunoDAO();
 		this.ofertaalunos = ofaldao.buscarOfertaAlunoSelecionados();
 	}
-	
-	
-	
-
 
 	public List<Tcc> getTccs() {
 		return tccs;

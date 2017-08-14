@@ -55,7 +55,7 @@ public class ProfessorBean extends GenericBean{
 		OfertaDAO ofdao = new OfertaDAO();
 		this.ofertas = ofdao.findAllFromPessoa(this.loginBean.getPessoa());
 		System.out.println("Ofertas encontradas: "+ this.ofertas.size());
-		return "empresa/mostrarOfertas";
+		return "professor/mostrarOfertas";
 	}
 	
 	public void listarTccs(){
@@ -69,7 +69,7 @@ public class ProfessorBean extends GenericBean{
 			OfertaController controller = new OfertaController();
 			controller.cadastrar(this.oferta, this.loginBean.getPessoa());
 			this.addSuccessMessage("Oferta salva com sucesso!");
-			proxView = "/empresa/mostrarOfertas?faces-redirect=true";
+			proxView = "/professor/mostrarOfertas?faces-redirect=true";
 			this.oferta = new Oferta();
 		} catch (PersistenceException e) {
 			this.addErrorMessage("Erro ao tentar salvar a Oferta");
@@ -97,7 +97,7 @@ public class ProfessorBean extends GenericBean{
 		oa.setStatus(StatusAlunoOferta.APROVADO);
 		ofaldao.update(oa);
 		ofaldao.commit();
-		return "/empresa/oferta?faces-redirect=true&id="+ofal.getOferta().getId();
+		return "/professor/oferta?faces-redirect=true&id="+ofal.getOferta().getId();
 	}
 	
 	public void fecharInscricoes(){

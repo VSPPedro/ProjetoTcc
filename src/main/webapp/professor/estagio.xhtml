@@ -23,7 +23,7 @@
 					</h3>
 					
 					<hr />
-					<h:link outcome="/empresa/mostrarEstagios" class="btn btn-default btn-sm" style="margin-right: 5px;">
+					<h:link outcome="/professor/mostrarEstagios" class="btn btn-default btn-sm" style="margin-right: 5px;">
 						<i class="glyphicon glyphicon-arrow-left"></i> 
 						Voltar
 					</h:link>
@@ -54,19 +54,10 @@
 						<div class="col-md-9">#{ProfessorBean.tcc.descricao }</div>
 					</div>
 					
-<!-- 					<div class="row">
-						<div class="col-md-3">
-							<b>Carga Horária Semanal:</b>
-						</div>
-						<div class="col-md-9">#{empresaBean.estagio.chSemanal }</div>
-					</div> -->
-		
-		
-					
 					<div class="text-left" style="margin-top: 20px;">
 						<h:form>
-							<h:commandButton actionListener="#{ProfessorBean.fecharInscricoes}" value="Fechar inscrições" class="btn btn-danger btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Aprovado'}"/>
-							<h:commandButton actionListener="#{ProfessorBean.solicitarAprovacaoTcc}" value="Solicitar aprovação de Estágio" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{empresaBean.oferta.status.nome eq 'Finalizado'}"/>
+							<h:commandButton actionListener="#{ProfessorBean.fecharInscricoes}" value="Fechar inscrições" class="btn btn-danger btn-sm" style="margin-right: 5px;" rendered="#{professorBean.oferta.status.nome eq 'Aprovado'}"/>
+							<h:commandButton actionListener="#{ProfessorBean.solicitarAprovacaoTcc}" value="Solicitar aprovação de Estágio" class="btn btn-success btn-sm" style="margin-right: 5px;" rendered="#{professorBean.oferta.status.nome eq 'Finalizado'}"/>
 						</h:form>
 					</div>
 				</div>

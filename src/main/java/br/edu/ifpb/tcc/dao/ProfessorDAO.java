@@ -48,7 +48,6 @@ public class ProfessorDAO extends GenericDAO<Professor, Integer> {
 		this.update(pro);
 		this.commit();
 		return pro;
-		
 	}
 	
 	public Professor desbloquearProfessor(int id) {

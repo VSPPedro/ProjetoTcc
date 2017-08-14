@@ -33,9 +33,7 @@ public class Professor extends Pessoa implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="curso_id", foreignKey = @ForeignKey(name = "fk_curso"))
 	private Curso curso;
-	
 
-	
 	@OneToMany(mappedBy="professor")
 	private List<Oferta> ofertas;
 	
@@ -55,8 +53,6 @@ public class Professor extends Pessoa implements Serializable {
 			ofertas.add(oferta);
 		}
 	}
-	
-
 
 	public String getNome() {
 		return nome;
@@ -86,28 +82,11 @@ public class Professor extends Pessoa implements Serializable {
 		this.curso = curso;
 	}
 
-
-
 	public boolean isAtiva() {
 		return ativa;
 	}
-
-
+	
 	public void setAtiva(boolean ativa) {
 		this.ativa = ativa;
 	}
-	
-	
-
-	
-
-	
-
-	
-	
-	
-	
-	
-	
-	
 }

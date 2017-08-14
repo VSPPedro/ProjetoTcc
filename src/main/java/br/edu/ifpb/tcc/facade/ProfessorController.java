@@ -68,11 +68,6 @@ public class ProfessorController {
 		ProfessorDAO dao = new ProfessorDAO(PersistenceUtil.getCurrentEntityManager());
 		return dao.find(id);
 	}
-/*	public professor consultar(){
-		ProfessorDAO dao = new ProfessorDAO(PersistenceUtil.getCurrentEntityManager());
-		List<professor> professors= dao.findAll();
-		return professors;
-	}*/
 
 	public Professor bloquearprofessor(int id) {
 		ProfessorDAO dao = new ProfessorDAO(PersistenceUtil.getCurrentEntityManager());

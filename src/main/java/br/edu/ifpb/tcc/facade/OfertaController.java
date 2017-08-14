@@ -16,15 +16,12 @@ import br.edu.ifpb.tcc.entity.Pessoa;
 import br.edu.ifpb.tcc.entity.StatusAlunoOferta;
 
 public class OfertaController {
-	private Oferta oferta;
 	
 	public List<Oferta> consultar(Pessoa pessoa){
 		OfertaDAO dao = new OfertaDAO();
 		List<Oferta> ofertas = dao.findAllFromPessoa(pessoa);
 		return ofertas;
 	}
-	
-//	public EmpresaController(){}
 	
 	public Resultado aprovarOfertaAluno(int ofAlId){
 		OfertaAlunoDAO ofaldao = new OfertaAlunoDAO(PersistenceUtil.getCurrentEntityManager());
@@ -46,8 +43,7 @@ public class OfertaController {
 		} else{
 			dao.update(oferta);
 		}
-		dao.commit();
-				
+		dao.commit();	
 	}
 	
 	public Oferta buscar(int id){
@@ -115,37 +111,5 @@ public class OfertaController {
 		return dao.aprovarOferta(o);
 		
 	}
-
-
-//	public Oferta buscarFromOfertaAluno(int ofAlId) {
-//		OfertaAlunoDAO ofal = new OfertaAlunoDAO(PersistenceUtil.getCurrentEntityManager());
-//		
-//	}
-
-	
-
-
-	
-//	public Resultado remove(Map<String, String[]> parametros){
-//		Resultado resultado= new Resultado();
-//		EmpresaDAO dao = new EmpresaDAO(PersistenceUtil.getCurrentEntityManager());
-//		dao.beginTransaction();
-//		String[] selecionadosform = parametros.get("del_selected");
-//		try{
-//			for(String s : selecionadosform){
-//				Contato c = dao.find(Integer.parseInt(s));
-//				dao.delete(c);
-//			}
-//			resultado.setErro(false);
-//			resultado.setMensagens(Collections.singletonList(new Mensagem("Contatos removidos com sucesso", Categoria.INFO)));
-//		}catch(Exception exc){
-//			resultado.setEntidade(this.contato);
-//			resultado.setErro(true);
-//			resultado.setMensagens(this.mensagensErro);
-//		}
-//		dao.commit();
-//		
-//		return resultado;
-//	}
 }
 

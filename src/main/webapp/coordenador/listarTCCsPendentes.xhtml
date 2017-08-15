@@ -9,7 +9,7 @@
 	template="/templating/template.xhtml">
 	
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{coordenadorBean.listarTccsAtivos}"/>
+		<f:event type="preRenderView" listener="#{coordenadorBean.listarOfertasPendentes}"/>
 	</f:metadata>
 	
 	<ui:define name="tbody">
@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center">
-						<i class="glyphicon glyphicon-warning-sign"></i> TCCs Finalizados
+						<i class="glyphicon glyphicon-warning-sign"></i> Oportunidades Pendentes
 					</h3>
 					<hr />
 				</div>
@@ -27,11 +27,11 @@
 			</div>
 			<div class="row">
 				<div class="container">
-						<ui:fragment rendered="#{empty coordenadorBean.tccs}">
-							<h3 class="text-center">Sem Tccs ativos</h3>
+						<ui:fragment rendered="#{empty coordenadorBean.ofertas}">
+							<h3 class="text-center">Sem oportunidades pendentes</h3>
 						</ui:fragment>
 						<h:form>
-							<h:dataTable value="#{coordenadorBean.tccs}" var="t" rendered="#{not empty coordenadorBean.tccs}" 
+							<h:dataTable value="#{coordenadorBean.ofertas}" var="o" rendered="#{not empty coordenadorBean.ofertas}" 
 										class="table table-striped table-hover"
 										headerClass="background-color: #34e89e; color: #fff;">
 							
@@ -40,22 +40,21 @@
 									<i class="glyphicon glyphicon-menu-right"></i>
 								</h:column>
 								<h:column>
-									<f:facet name="header">Concluinte</f:facet>
-									#{t.aluno.nome}
+									<f:facet name="header">Professor</f:facet>
+									#{o.professor.nome}
 								</h:column>
 								<h:column>
-									<f:facet name="header">Matricula</f:facet>
-									#{t.aluno.matricula}
+									<f:facet name="header">Titulo</f:facet>
+									#{o.titulo}
 								</h:column>
 								<h:column>
-									<f:facet name="header">Professor Orientador</f:facet>
-									#{t.professor.nome}
+									<f:facet name="header">Descrição</f:facet>
+									#{o.descricao}
 								</h:column>
-								
-								
+						
 								<h:column>
 									<f:facet name="header">Ações</f:facet>
-									<h:commandButton actionListener="#{coordenadorBean.fecharTcc(t)}" class="btn btn-danger btn-sm" value="Fechar" />
+									<h:commandButton actionListener="#{coordenadorBean.aprovarOferta(o)}" class="btn btn-success" value="Aprovar" />
 								</h:column>
 							
 							</h:dataTable>

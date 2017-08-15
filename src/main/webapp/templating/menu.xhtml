@@ -42,15 +42,15 @@
 								        <li class="dropdown">
 								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Listar Temas<span class="caret"></span></a>
 								          <ul class="dropdown-menu">
-								            <li><h:link outcome="/empresa/mostrarOfertas" style="margin-right:2px;"><i class="glyphicon glyphicon-tags" ></i> Meus Temas</h:link> </li>
-								            <li><h:link outcome="/empresa/cadastrarOferta"><i class="glyphicon glyphicon-plus-sign"></i> Cadastrar Tema de TCC</h:link></li>
+								            <li><h:link outcome="/professor/mostrarOfertas" style="margin-right:2px;"><i class="glyphicon glyphicon-tags" ></i> Meus Temas</h:link> </li>
+								            <li><h:link outcome="/professor/cadastrarOferta"><i class="glyphicon glyphicon-plus-sign"></i> Cadastrar Tema de TCC</h:link></li>
 								          </ul>
 								        </li>
 								        <li class="dropdown">
 								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i>TCCs <span class="caret"></span></a>
 								          <ul class="dropdown-menu">
 	
-								            <li><h:link outcome="/empresa/mostrarEstagios"><i class="glyphicon glyphicon-eye-open"></i> Meus TCCs</h:link></li>
+								            <li><h:link outcome="/professor/mostrarEstagios"><i class="glyphicon glyphicon-eye-open"></i> Meus TCCs</h:link></li>
 	
 								          </ul>
 								        </li>
@@ -117,8 +117,6 @@
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> #{loginBean.pessoa.nome} | #{loginBean.pessoa.tipo} | <span class="caret"></span></a>
 								    	<ul class="dropdown-menu">
-
-											
 
 											<li><h:commandLink action="#{loginBean.logout}"><i class="glyphicon glyphicon-remove text-right"></i> Sair do sistema</h:commandLink></li>
 

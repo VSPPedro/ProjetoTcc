@@ -20,7 +20,7 @@
 
 					
 					<hr />
-					<h:link outcome="/empresa/mostrarOfertas" class="btn btn-default btn-sm" style="margin-right: 5px;">
+					<h:link outcome="/professor/mostrarOfertas" class="btn btn-default btn-sm" style="margin-right: 5px;">
 						<i class="glyphicon glyphicon-arrow-left"></i> 
 						Voltar
 					</h:link>
@@ -33,17 +33,17 @@
 			<div class="row">
 				<div class="container">
 					<div class="col-md-12 text-center">
-							<ui:fragment rendered="#{ProfessorBean.oferta.status.nome eq 'Pendente de aprovação'}">
-								<h3><span class="label label-default">Status #{ProfessorBean.oferta.status.nome}</span></h3>
+							<ui:fragment rendered="#{professorBean.oferta.status.nome eq 'Pendente de aprovação'}">
+								<h3><span class="label label-default">Status #{professorBean.oferta.status.nome}</span></h3>
 							</ui:fragment>
-							<ui:fragment rendered="#{ProfessorBean.oferta.status.nome eq 'Aprovado' }">
-								<h3><span class="label label-success">Status #{ProfessorBean.oferta.status.nome}</span></h3>
+							<ui:fragment rendered="#{professorBean.oferta.status.nome eq 'Aprovado' }">
+								<h3><span class="label label-success">Status #{professorBean.oferta.status.nome}</span></h3>
 							</ui:fragment>
-							<ui:fragment rendered="#{ProfessorBean.oferta.status.nome eq 'Finalizado' }">
-								<h3><span class="label label-danger">Status #{ProfessorBean.oferta.status.nome}</span></h3>
+							<ui:fragment rendered="#{professorBean.oferta.status.nome eq 'Finalizado' }">
+								<h3><span class="label label-danger">Status #{professorBean.oferta.status.nome}</span></h3>
 							</ui:fragment>
-							<ui:fragment rendered="#{empresaBean.oferta.status.nome eq 'Concluído' }">
-								<h3><span class="label label-success label-lg">Status #{ProfessorBean.oferta.status.nome}</span></h3>
+							<ui:fragment rendered="#{professorBean.oferta.status.nome eq 'Concluído' }">
+								<h3><span class="label label-success label-lg">Status #{professorBean.oferta.status.nome}</span></h3>
 							</ui:fragment>
 						</div>
 				</div>
@@ -54,58 +54,14 @@
 						<div class="col-md-3">
 							<b>Titulo:</b>
 						</div>
-						<div class="col-md-9">#{ProfessorBean.oferta.titulo}</div>
+						<div class="col-md-9">#{professorBean.oferta.titulo}</div>
 					</div>
 					<div class="row">
 						<div class="col-md-3">
 							<b>Descrição:</b>
 						</div>
-						<div class="col-md-9">#{ProfessorBean.oferta.descricao}</div>
+						<div class="col-md-9">#{professorBean.oferta.descricao}</div>
 					</div>
-					<!-- <div class="row">
-						<div class="col-md-3">
-							<b>Valor Bolsa:</b>
-						</div>
-						<div class="col-md-9">
-						<h:outputText value="#{empresaBean.oferta.valorBolsa}"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<b>Valor Transporte:</b>
-						</div>
-						<div class="col-md-9">
-						<h:outputText value="#{empresaBean.oferta.valorTransporte }"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<b>Valor Alimentação:</b>
-						</div>
-						<div class="col-md-9">
-						<h:outputText value="#{empresaBean.oferta.valorAlimentacao }"> <f:convertNumber currencySymbol="R$" type="currency"/> </h:outputText>
-					</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<b>Pre-Requisitos:</b>
-						</div>
-						<div class="col-md-9">#{empresaBean.oferta.preRequisitos }</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<b>Habilidades Necessarias:</b>
-						</div>
-						<div class="col-md-9">#{empresaBean.oferta.habilidadesTecnicasNecessarias }
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<b>Habilidades Desejáveis:</b>
-						</div>
-						<div class="col-md-9">#{empresaBean.oferta.habilidadesTecnicasDesejadas }
-						</div>
-					</div> -->
 					<div class="text-left" style="margin-top: 20px;">
 						<h:form>
 							<h:commandButton actionListener="#{ProfessorBean.fecharInscricoes}" value="Fechar inscrições" class="btn btn-danger btn-sm" style="margin-right: 5px;" rendered="#{ProfessorBean.oferta.status.nome eq 'Aprovado'}"/>
@@ -140,10 +96,6 @@
 							<f:facet name="header">Matricula</f:facet>
 							#{ofal.aluno.matricula}
 						</h:column>
-<!-- 						<h:column>
-							<f:facet name="header">Período</f:facet>
-							#{ofal.aluno.periodo}
-						</h:column> -->
 						<h:column>
 							<f:facet name="header">Status</f:facet>
 							<ui:fragment rendered="#{ofal.status.nome eq 'Pendente de aprovação' }">
@@ -152,14 +104,11 @@
 							<ui:fragment rendered="#{ofal.status.nome eq 'Aprovado' }">
 								<span class="label label-success">${ofal.status.nome }</span>
 							</ui:fragment>
-							
 						</h:column>
 						
 						<h:column>
 							<f:facet name="header">Ações</f:facet>
-							
-							<h:commandButton action="#{ProfessorBean.aprovarAluno(ofal)}" rendered="#{ofal.status.nome ne 'Aprovado'}" class="btn btn-success btn-sm" value="Aprovar" />
-							
+							<h:commandButton action="#{professorBean.aprovarAluno(ofal)}" rendered="#{ofal.status.nome ne 'Aprovado'}" class="btn btn-success btn-sm" value="Aprovar" />
 						</h:column>
 						
 					</h:dataTable>
@@ -168,7 +117,6 @@
 			</div>
 		</div>
 	</ui:define>	
-
 </ui:composition>
 
 

@@ -28,7 +28,7 @@ import br.edu.ifpb.tcc.entity.Oferta;
 import br.edu.ifpb.tcc.entity.OfertaAluno;
 import br.edu.ifpb.tcc.entity.StatusOferta;
 
-public class Test2_Cri_Rel_OF {
+public class Test2_Inserir_Oferta {
 	private static EntityManagerFactory emf;
 	private static SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 	private EntityManager em;
@@ -78,8 +78,6 @@ public class Test2_Cri_Rel_OF {
 //		of1.addAluno(al1);
 //		of1.addAluno(al2);
 		of1.setCurso(c1);
-		
-		
 		
 		Oferta of2 = new Oferta();
 		of2.setDescricao("Com a rápida ascensão e adesão...");
@@ -163,8 +161,6 @@ public class Test2_Cri_Rel_OF {
 		prodao.update(pro1);
 		prodao.update(pro2);
 		prodao.commit();
-		
 	}
-	
 }
 

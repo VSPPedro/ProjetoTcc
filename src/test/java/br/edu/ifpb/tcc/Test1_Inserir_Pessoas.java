@@ -61,12 +61,19 @@ public class Test1_Inserir_Pessoas{
 	@Test
 	public void test1(){
 		try{
+			
+			//---------------------------------------
+			//Coordenador
+			//---------------------------------------
 			Coordenador cod1= new Coordenador();
 			cod1.setNome("Valéria");
 			cod1.setEmail("valeria@ifpb.edu.br");
 			cod1.setSenha(PasswordUtil.encryptMD5("senhaadm"));
 			cod1.setTelefone("8396148795");
-
+			
+			//---------------------------------------
+			//Professor
+			//---------------------------------------
 			Professor pro1 = new Professor();
 			pro1.setNome("Fred");
 			pro1.setEmail("fred@ifpb.edu.br");
@@ -89,15 +96,17 @@ public class Test1_Inserir_Pessoas{
 			pro4.setNome("Damires");
 			pro4.setEmail("damires@ifpb.edu.br");
 			pro4.setSenha(PasswordUtil.encryptMD5("damiresbd"));
-			pro4.setTelefone("838736366");
+			pro4.setTelefone("8387363661");
 			
 			Professor pro5 = new Professor();
 			pro5.setNome("Petrônio");
 			pro5.setEmail("petronio@ifpb.edu.br");
 			pro5.setSenha(PasswordUtil.encryptMD5("petroniopadrao"));
-			pro5.setTelefone("838435316");
+			pro5.setTelefone("8384353161");
 			
-			//Alunos
+			//---------------------------------------
+			//Aluno
+			//---------------------------------------
 			Aluno al1 = new Aluno();
 			al1.setMatricula("20132370179");
 			al1.setNome("Yuri Canuto");
@@ -174,8 +183,13 @@ public class Test1_Inserir_Pessoas{
 			
 			AlunoDAO aldao = new AlunoDAO(em);
 			aldao.beginTransaction();
-			al1 = aldao.insert(al1);
-			al2 = aldao.insert(al2);
+			aldao.insert(al1);
+			aldao.insert(al2);
+			aldao.insert(al3);
+			aldao.insert(al4);
+			aldao.insert(al5);
+			aldao.insert(al6);
+			aldao.insert(al7);
 			aldao.commit();
 			
 		}catch(Exception exc){

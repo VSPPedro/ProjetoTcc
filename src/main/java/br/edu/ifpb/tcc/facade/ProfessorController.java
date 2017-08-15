@@ -52,7 +52,6 @@ public class ProfessorController {
 				System.out.println("Senha tá vazia: "+professor.getSenha());
 				PessoaDAO pdao = new PessoaDAO();
 				Pessoa pro = pdao.findByLogin(professor.getEmail());
-				System.out.println("Senha: "+pro.getSenha());
 				professor.setSenha(pro.getSenha());
 			}else{
 				System.out.println("Senha não tá vazia: "+professor.getSenha());

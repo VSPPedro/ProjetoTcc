@@ -74,7 +74,7 @@ public class CoordenadorBean extends GenericBean{
 		try {
 			ProfessorController ctrl = new ProfessorController();
 			ctrl.salvar(this.professor);
-			this.addSuccessMessage("Professor salvo com sucesso!");
+			this.addSuccessMessage("Professor editado com sucesso!");
 			proxView = "/coordenador/listarProfessores?faces-redirect=true";
 			this.professor = new Professor();
 		} catch (PersistenceException e) {

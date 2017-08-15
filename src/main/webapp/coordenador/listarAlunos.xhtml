@@ -33,9 +33,9 @@
 						<h:column>
 							<f:facet name="header"></f:facet>
 							
-							<h:link outcome="/coordenador/aluno?id=#{e.id}" styleClass="btn btn-default">
+							<h:link outcome="/coordenador/editarAluno?id=#{a.id}" styleClass="btn btn-default">
 								
-								<i class="glyphicon glyphicon-plus"></i>
+								<i class="glyphicon glyphicon-edit"></i>
 								
 							</h:link>
 						</h:column>
@@ -44,24 +44,25 @@
 							#{a.nome}
 						</h:column>
 						<h:column>
-							<f:facet name="header">Telefone</f:facet>
-							#{a.telefone }
-						</h:column>
-						<h:column>
 							<f:facet name="header">Matricula</f:facet>
 							#{a.matricula }
 						</h:column>
 						<h:column>
-							<f:facet name="header">Ações</f:facet>
-							<ui:fragment rendered="#{a.ativa eq true}">
-								<h:commandLink actionListener="#{coordenadorBean.bloquearAluno(a)}" class="btn btn-danger">
-									Bloquear
-								</h:commandLink>
+							<f:facet name="header">E-mail</f:facet>
+							#{a.email }
+						</h:column>
+						<h:column>
+							<f:facet name="header">Telefone</f:facet>
+							#{a.telefone }
+						</h:column>
+					
+						<h:column>
+							<f:facet name="header">Título do TCC</f:facet>
+							<ui:fragment rendered="#{not empty a.tcc.titulo}">
+									#{a.tcc.titulo}
 							</ui:fragment>
-							<ui:fragment rendered="#{a.ativa eq false}">
-								<h:commandLink actionListener="#{coordenadorBean.desbloquearAluno(a)}" class="btn btn-success">
-									Desbloquear
-								</h:commandLink>
+							<ui:fragment rendered="#{empty a.tcc.titulo}">
+									Aluno não possui ou não regitrou o TCC
 							</ui:fragment>
 						</h:column>
 					</h:dataTable>

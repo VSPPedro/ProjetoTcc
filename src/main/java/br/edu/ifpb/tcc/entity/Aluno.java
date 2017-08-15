@@ -13,7 +13,6 @@ import javax.persistence.*;
 public class Aluno extends Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	
 	@Column(name = "ATIVO_AlUNO")
 	private boolean ativa = true;
 	
@@ -31,9 +30,6 @@ public class Aluno extends Pessoa implements Serializable {
 	@JoinColumn(name="tcc_id")
 	private Tcc tcc;
 
-    
-	
-	
 	public void addOfertaAluno(OfertaAluno ofertaAluno){
 		if(ofertaAlunos == null){
 			this.ofertaAlunos = new ArrayList<OfertaAluno>();
@@ -48,7 +44,11 @@ public class Aluno extends Pessoa implements Serializable {
 	public void setOfertaAlunos(List<OfertaAluno> ofertaAlunos) {
 		this.ofertaAlunos = ofertaAlunos;
 	}
-
+	
+	public void limparOfertaAlunos() {
+		this.ofertaAlunos = new ArrayList<OfertaAluno>();
+	}
+	
 	public Curso getCurso() {
 		return curso;
 	}
@@ -56,10 +56,6 @@ public class Aluno extends Pessoa implements Serializable {
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
-
-
-
-
 
 	public Tcc getTcc() {
 		return tcc;
@@ -84,6 +80,4 @@ public class Aluno extends Pessoa implements Serializable {
 	public void setAtiva(boolean ativa) {
 		this.ativa = ativa;
 	}
-
-	
 }

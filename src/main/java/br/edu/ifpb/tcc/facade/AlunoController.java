@@ -5,7 +5,11 @@ import java.util.List;
 import br.edu.ifpb.tcc.dao.AlunoDAO;
 import br.edu.ifpb.tcc.dao.OfertaAlunoDAO;
 import br.edu.ifpb.tcc.dao.PersistenceUtil;
+import br.edu.ifpb.tcc.dao.PessoaDAO;
+import br.edu.ifpb.tcc.dao.ProfessorDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
+import br.edu.ifpb.tcc.entity.Pessoa;
+import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.util.PasswordUtil;
 
 public class AlunoController {
@@ -23,6 +27,26 @@ public class AlunoController {
 			return true;
 		}
 		return false;
+	}
+	
+	public void salvar(Aluno aluno) {
+		
+		AlunoDAO dao= new AlunoDAO(PersistenceUtil.getCurrentEntityManager());
+		dao.beginTransaction();
+		if(aluno.getId() == null) {
+			dao.insert(aluno);
+		} else{
+			if(aluno.getSenha().isEmpty()){
+				PessoaDAO pdao = new PessoaDAO();
+				Pessoa pro = pdao.findByLogin(aluno.getEmail());
+				aluno.setSenha(pro.getSenha());
+			}else{
+				aluno.setSenha(PasswordUtil.encryptMD5(aluno.getSenha()));
+			}
+			dao.update(aluno);
+		}
+		dao.commit();
+			
 	}
 	
 	public Aluno buscar(int id){

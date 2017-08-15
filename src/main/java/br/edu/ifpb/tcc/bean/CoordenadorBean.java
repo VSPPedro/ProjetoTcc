@@ -82,7 +82,21 @@ public class CoordenadorBean extends GenericBean{
 		}
 		
 		return proxView;
+	}
+	
+	public String salvarAluno(){
+		String proxView = null;
+		try {
+			AlunoController ctrl = new AlunoController();
+			ctrl.salvar(this.aluno);
+			this.addSuccessMessage("Aluno editado com sucesso!");
+			proxView = "/coordenador/listarAlunos?faces-redirect=true";
+			this.professor = new Professor();
+		} catch (PersistenceException e) {
+			this.addErrorMessage("Erro ao tentar salvar o aluno");
+		}
 		
+		return proxView;
 	}
 	
 	public void listarProfessores(){
@@ -181,8 +195,6 @@ public class CoordenadorBean extends GenericBean{
 		this.ofertas = ofertas;
 	}
 
-
-
 	public List<Professor> getProfessores() {
 		return professores;
 	}
@@ -234,7 +246,4 @@ public class CoordenadorBean extends GenericBean{
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
 	}
-	
-	
-
 }

@@ -49,12 +49,10 @@ public class ProfessorController {
 		} else{
 			if(professor.getSenha().isEmpty()){
 				//ISSUE HERE - PASSWORD SET
-				System.out.println("Senha tá vazia: "+professor.getSenha());
 				PessoaDAO pdao = new PessoaDAO();
 				Pessoa pro = pdao.findByLogin(professor.getEmail());
 				professor.setSenha(pro.getSenha());
 			}else{
-				System.out.println("Senha não tá vazia: "+professor.getSenha());
 				professor.setSenha(PasswordUtil.encryptMD5(professor.getSenha()));
 			}
 			dao.update(professor);

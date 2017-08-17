@@ -20,7 +20,6 @@ public class CursoController {
 		Resultado resultado= new Resultado();
 		
 		if(isParametrosValidos(parametros, pessoa)) {
-				System.out.println("DADOS DO CURSO: ");
 				CursoDAO dao= new CursoDAO(PersistenceUtil.getCurrentEntityManager());
 				dao.beginTransaction();
 				if(this.curso.getId() == null) {

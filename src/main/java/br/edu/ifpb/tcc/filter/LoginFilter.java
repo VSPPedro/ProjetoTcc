@@ -29,7 +29,6 @@ public class LoginFilter implements Filter {
 				return;
 			}
 		} else {
-			System.out.println(httpRequest.getRequestURI());
 			redirectLogin(httpRequest, httpResponse);
 			return;
 		}

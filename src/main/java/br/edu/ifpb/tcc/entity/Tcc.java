@@ -50,6 +50,22 @@ public class Tcc {
 	@ManyToMany(targetEntity = Professor.class)
 	@JoinTable(name="TB_BANCA", foreignKey = @ForeignKey(name = "fk_professor"))
 	private List<Professor> banca = new ArrayList<Professor>();
+
+	@Column(name = "DESCRICAO")
+	private String descricao;
+	
+	@Column(name = "TITULO")
+	private String titulo;
+	
+	@Column(name="ST_TCC")
+	@Enumerated(EnumType.STRING) 
+	private StatusTcc status = StatusTcc.PENDENTE_DE_APROVACAO;
+	
+	public Tcc(){}
+
+	public Integer getId() {
+		return id;
+	}
 	
 	public Date getDataApresentacao() {
 		return dataApresentacao;
@@ -70,23 +86,7 @@ public class Tcc {
 	public void setBanca(List<Professor> banca) {
 		this.banca = banca;
 	}
-
-	@Column(name = "DESCRICAO")
-	private String descricao;
 	
-	@Column(name = "TITULO")
-	private String titulo;
-	
-	@Column(name="ST_TCC")
-	@Enumerated(EnumType.STRING) 
-	private StatusTcc status = StatusTcc.PENDENTE_DE_APROVACAO;
-	
-	public Tcc(){}
-
-	public Integer getId() {
-		return id;
-	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -114,7 +114,6 @@ public class Tcc {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
-
 
 	public String getDescricao() {
 		return descricao;

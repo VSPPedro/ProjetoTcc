@@ -22,7 +22,6 @@ public class PessoaDAO extends GenericDAO<Pessoa, Integer> {
 	public Pessoa findByLogin(String email) {
 		EntityManager em = this.getEntityManager();
 		if(em == null){
-			System.out.println("entity manager NULO!!! AFFFS");
 			return null;
 		}
 		Query q = this.getEntityManager().createQuery("select p from Pessoa p where p.email = :email");

@@ -55,16 +55,6 @@
 							<f:facet name="header">Telefone</f:facet>
 							#{a.telefone }
 						</h:column>
-					
-						<h:column>
-							<f:facet name="header">Título do TCC</f:facet>
-							<ui:fragment rendered="#{not empty a.tcc.titulo}">
-									#{a.tcc.titulo}
-							</ui:fragment>
-							<ui:fragment rendered="#{empty a.tcc.titulo}">
-									Aluno não possui ou não regitrou o TCC
-							</ui:fragment>
-						</h:column>
 					</h:dataTable>
 					</h:form>
 				</div>

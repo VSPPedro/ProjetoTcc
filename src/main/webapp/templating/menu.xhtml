@@ -56,11 +56,13 @@
 					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'A'}">
 					       			<ul class="nav navbar-nav navbar-left">
 								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Listas de Temas de TCCs <span class="caret"></span></a>
+								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> TCC <span class="caret"></span></a>
 								          <ul class="dropdown-menu">
 											
-											<li><h:link outcome="/aluno/meuTcc"><i class="glyphicon glyphicon-eye-open"></i> Meu TCC</h:link></li>
-
+											<li> <h:link outcome="/aluno/cadastrarTcc"><i class="glyphicon glyphicon-tags"></i> Registrar TCC </h:link></li>
+											
+											<li> <h:commandLink action="#{tccBean.detalhesTcc}" style="margin-right:2px;"><i class="glyphicon glyphicon-th-list" ></i> TCC registrado </h:commandLink> </li>
+											
 								          </ul>
 								        </li>
 								      </ul>

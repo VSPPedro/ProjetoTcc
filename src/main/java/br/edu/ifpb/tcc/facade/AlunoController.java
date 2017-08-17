@@ -46,6 +46,26 @@ public class AlunoController {
 			
 	}
 	
+	public void atualizar(Aluno aluno) {
+		
+		AlunoDAO dao= new AlunoDAO(PersistenceUtil.getCurrentEntityManager());
+		dao.beginTransaction();
+		if(aluno.getId() == null) {
+			dao.insert(aluno);
+		} else{
+			if(aluno.getSenha().isEmpty()){
+				PessoaDAO pdao = new PessoaDAO();
+				Pessoa pro = pdao.findByLogin(aluno.getEmail());
+				aluno.setSenha(pro.getSenha());
+			}else{
+				aluno.setSenha(aluno.getSenha());
+			}
+			dao.update(aluno);
+		}
+		dao.commit();
+			
+	}
+	
 	public Aluno buscar(int id){
 		AlunoDAO dao = new AlunoDAO(PersistenceUtil.getCurrentEntityManager());
 		return dao.find(id);

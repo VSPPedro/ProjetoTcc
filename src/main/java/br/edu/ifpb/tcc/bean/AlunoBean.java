@@ -1,12 +1,18 @@
 package br.edu.ifpb.tcc.bean;
 
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.PersistenceException;
 
+import br.edu.ifpb.tcc.dao.AlunoDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
+import br.edu.ifpb.tcc.entity.Tcc;
 import br.edu.ifpb.tcc.facade.AlunoController;
+import br.edu.ifpb.tcc.facade.TccController;
+
 
 @ManagedBean(name="alunoBean")
 @ViewScoped
@@ -16,33 +22,26 @@ public class AlunoBean extends GenericBean{
 	private boolean inscrito;
 	
 	private Aluno aluno = new Aluno();
+
+	private Tcc tcc = new Tcc();
 	
 	@ManagedProperty("#{loginBean}")
 	private LoginBean loginBean;
 	
-	/*
-	public void selecionarOferta(){
-		OfertaDAO ofdao = new OfertaDAO();
-		this.oferta = ofdao.find(this.id);
-	}
-	
-	public void verificarInscrito(){
-		OfertaAlunoDAO ofdao = new OfertaAlunoDAO();
-		OfertaDAO ofdaoo = new OfertaDAO();
-		this.inscrito = ofdao.alunoEstaInscrito((Aluno)this.loginBean.getPessoa(), ofdaoo.find(this.id));
-	}
-	
-	public String inscreverAluno(){
-		//OfertaController ofertaCtrl = new OfertaController();
-		//ofertaCtrl.inscreverAluno(this.id, (Aluno)this.loginBean.getPessoa());
-
-		FacesMessage msg = new FacesMessage("Inscrição Realizada com Sucesso");
-		FacesContext fc= FacesContext.getCurrentInstance();
-		msg.setSeverity(FacesMessage.SEVERITY_INFO);
-		fc.addMessage(null,msg);
+	@PostConstruct
+	private void init() {
+		this.aluno = (Aluno) loginBean.getPessoa();
 		
-		return null;
-	}*/
+		this.aluno.setTcc(new Tcc());
+	}
+	
+	public Tcc getTcc() {
+		return tcc;
+	}
+
+	public void setTcc(Tcc tcc) {
+		this.tcc = tcc;
+	}
 	
 	public String cadastrarAluno(){
 		AlunoController ctrl = new AlunoController();
@@ -52,6 +51,43 @@ public class AlunoBean extends GenericBean{
 		}
 		this.addErrorMessage("Este email já está em uso.");
 		return null;
+	}
+	
+	public String salvarAlunoETcc(){
+		String proxView = null;
+		try {
+			//Obter email
+			AlunoDAO alunoTcc = new AlunoDAO();
+			Aluno alun = alunoTcc.findByLogin(this.aluno.getEmail());
+			
+			System.out.println("this.aluno.getTcc().getId(): " + this.aluno.getTcc().getId());
+			System.out.println("this.aluno.getTcc().getTitulo(): " + this.aluno.getTcc().getTitulo());
+			System.out.println("alun.getTcc().getId(): " + alun.getTcc().getId());
+			System.out.println("alun.getTcc().getTitulo(): " + alun.getTcc().getTitulo());
+			
+			if (alun.getTcc().getId() == null) { 
+				this.addSuccessMessage("TCC adicionado com sucesso!");
+			} else {
+				this.aluno.getTcc().setId(alun.getTcc().getId());
+				this.addSuccessMessage("TCC editado com sucesso!");
+			}
+			
+			TccController tccCtrl = new TccController();
+			this.aluno.getTcc().setAluno(this.aluno);
+			tccCtrl.salvar(this.aluno.getTcc());
+			
+			//Salvar aluno - gambis
+			this.aluno.setSenha(alun.getSenha());
+			
+			AlunoController alunoCtrl = new AlunoController();
+			alunoCtrl.atualizar(this.aluno);
+			
+			proxView = "/aluno/acompanharTcc?faces-redirect=true";
+		} catch (PersistenceException e) {
+			this.addErrorMessage("Erro ao tentar salvar o aluno!");
+		}
+		
+		return proxView;
 	}
 	
 	public LoginBean getLoginBean() {

@@ -148,7 +148,7 @@ public class InsereUsuarios{
 			Aluno al6 = new Aluno();
 			al6.setMatricula("20132370233");
 			al6.setNome("Thiago Henrique");
-			al6.setEmail("joao@academico.ifpb.edu.br");
+			al6.setEmail("thiago@academico.ifpb.edu.br");
 			al6.setSenha(PasswordUtil.encryptMD5("joaoaluno"));
 			al6.setTelefone("88551234");
 			

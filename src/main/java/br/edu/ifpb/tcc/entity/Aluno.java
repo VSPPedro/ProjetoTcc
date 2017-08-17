@@ -1,10 +1,16 @@
 package br.edu.ifpb.tcc.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 @Entity
@@ -23,7 +29,7 @@ public class Aluno extends Pessoa implements Serializable {
 	@JoinColumn(name="curso_id", foreignKey = @ForeignKey(name = "fk_curso"))
 	private Curso curso;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@OneToOne
 	@JoinColumn(name="tcc_id")
 	private Tcc tcc;
 

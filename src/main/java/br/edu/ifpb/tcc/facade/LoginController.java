@@ -11,6 +11,8 @@ public class LoginController {
 		PessoaDAO pdao = new PessoaDAO();
 		Pessoa p = pdao.findByLogin(login);
 		
+		System.out.println("Pessoa nome: " + p.getNome());
+		
 		if(p != null && p.getSenha().equals(PasswordUtil.encryptMD5(passwd))){
 			return p;
 		}

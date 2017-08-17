@@ -23,15 +23,11 @@ public class AlunoDAO extends GenericDAO<Aluno, Integer> {
 		try{
 			a = (Aluno) q.getSingleResult();
 		}catch(NoResultException e){
-			
+			System.out.println(e.getMessage());	
 		}
 		return a;
 	}
 	
-//	public List<Aluno> getAlunosFromOferta(Oferta oferta){
-//		Query q = this.getEntityManager().createQuery("select a from Aluno a where a.");
-//		
-//	}
 	public Aluno bloquearAluno(int id) {
 		Aluno alu = this.find(id);
 		this.beginTransaction();
@@ -50,5 +46,4 @@ public class AlunoDAO extends GenericDAO<Aluno, Integer> {
 		return alu;
 		
 	}
-
 }

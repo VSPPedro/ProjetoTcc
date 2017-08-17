@@ -1,9 +1,7 @@
 package br.edu.ifpb.tcc.entity;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -77,7 +74,6 @@ public class Tcc {
 		this.aluno = aluno;
 	}
 
-
 	public Professor getProfessor() {
 		return professor;
 	}
@@ -110,11 +106,4 @@ public class Tcc {
 	public void setStatus(StatusTcc status) {
 		this.status = status;
 	}
-  
-	
-
-	
-	
-	
-	
 }

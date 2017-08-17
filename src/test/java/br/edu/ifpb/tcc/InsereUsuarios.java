@@ -13,26 +13,15 @@ import org.junit.Test;
 
 import br.edu.ifpb.tcc.dao.AlunoDAO;
 import br.edu.ifpb.tcc.dao.CoordenadorDAO;
-import br.edu.ifpb.tcc.dao.CursoDAO;
-import br.edu.ifpb.tcc.dao.ProfessorDAO;
-
-//import br.edu.ifpb.sistemaestagio.dao.ContatoDAO;
 import br.edu.ifpb.tcc.dao.ManagedEMContext;
-//import br.edu.ifpb.sistemaestagio.dao.OperadoraDAO;
 import br.edu.ifpb.tcc.dao.PersistenceUtil;
+import br.edu.ifpb.tcc.dao.ProfessorDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
 import br.edu.ifpb.tcc.entity.Coordenador;
-import br.edu.ifpb.tcc.entity.Curso;
 import br.edu.ifpb.tcc.entity.Professor;
-
-//import br.edu.ifpb.sistemaestagio.dao.UsuarioDAO;
-//import br.edu.ifpb.sistemaestagio.entity.Contato;
-//import br.edu.ifpb.sistemaestagio.entity.Operadora;
-//import br.edu.ifpb.sistemaestagio.entity.Perfil;
-//import br.edu.ifpb.sistemaestagio.entity.Usuario;
 import br.edu.ifpb.tcc.util.PasswordUtil;
 
-public class Test1_Inserir_Pessoas{
+public class InsereUsuarios{
 	private static EntityManagerFactory emf;
 	private static SimpleDateFormat fmt = new SimpleDateFormat("dd/MM/yyyy");
 	private EntityManager em;
@@ -42,14 +31,14 @@ public class Test1_Inserir_Pessoas{
 		PersistenceUtil.createEntityManagerFactory("tcc");
 		emf = PersistenceUtil.getEntityManagerFactory();
 		ManagedEMContext.bind(emf, emf.createEntityManager());
-		System.out.println("init()");
+		System.out.println("init() - Inserir Pessoas");
 	}
 
 	@AfterClass
 	public static void destroy() {
 		if (emf != null) {
 			emf.close();
-			System.out.println("destroy()");
+			System.out.println("destroy() - Inserir Pessoas");
 		}
 	}
 
@@ -70,6 +59,11 @@ public class Test1_Inserir_Pessoas{
 			cod1.setEmail("valeria@ifpb.edu.br");
 			cod1.setSenha(PasswordUtil.encryptMD5("senhaadm"));
 			cod1.setTelefone("8396148795");
+			
+			CoordenadorDAO coddao= new CoordenadorDAO(em);
+			coddao.beginTransaction();
+			coddao.insert(cod1);
+			coddao.commit();
 			
 			//---------------------------------------
 			//Professor
@@ -103,6 +97,15 @@ public class Test1_Inserir_Pessoas{
 			pro5.setEmail("petronio@ifpb.edu.br");
 			pro5.setSenha(PasswordUtil.encryptMD5("petroniopadrao"));
 			pro5.setTelefone("8384353161");
+			
+			ProfessorDAO pro = new ProfessorDAO(em);
+			pro.beginTransaction();
+			pro.insert(pro1);
+			pro.insert(pro2);
+			pro.insert(pro3);
+			pro.insert(pro4);
+			pro.insert(pro5);
+			pro.commit();
 			
 			//---------------------------------------
 			//Aluno
@@ -155,32 +158,7 @@ public class Test1_Inserir_Pessoas{
 			al7.setEmail("idjinne@academico.ifpb.edu.br");
 			al7.setSenha(PasswordUtil.encryptMD5("idjinnealuno"));
 			al7.setTelefone("87554123");
-			
-			Curso c1 = new Curso();
-			c1.setNome("Sistemas para Internet");
-			c1.setCh(30);
-//			c1.setCoordenador(cod1);
-//			cod1.setCurso(c1);
-			
-			CursoDAO cdao = new CursoDAO(em);
-			cdao.beginTransaction();
-			cdao.insert(c1);
-			cdao.commit();
 
-			ProfessorDAO pro = new ProfessorDAO(em);
-			pro.beginTransaction();
-			pro.insert(pro1);
-			pro.insert(pro2);
-			pro.insert(pro3);
-			pro.insert(pro4);
-			pro.insert(pro5);
-			pro.commit();
-
-			CoordenadorDAO coddao= new CoordenadorDAO(em);
-			coddao.beginTransaction();
-			cod1=coddao.insert(cod1);
-			coddao.commit();
-			
 			AlunoDAO aldao = new AlunoDAO(em);
 			aldao.beginTransaction();
 			aldao.insert(al1);

@@ -43,10 +43,22 @@ public class Tcc {
 	@Column(name="DATA_INICIO")
 	private Date dataInicio;
 	
+	@Temporal(TemporalType.DATE)
+	@Column(name="DATA_INICIO")
+	private Date dataApresentacao;
+	
 	@ManyToMany(targetEntity = Professor.class)
 	@JoinTable(name="TB_BANCA", foreignKey = @ForeignKey(name = "fk_professor"))
 	private List<Professor> banca = new ArrayList<Professor>();
 	
+	public Date getDataApresentacao() {
+		return dataApresentacao;
+	}
+
+	public void setDataApresentacao(Date dataApresentacao) {
+		this.dataApresentacao = dataApresentacao;
+	}
+
 	public void addBanca(Professor professor) {
 		banca.add(professor);
 	}

@@ -40,7 +40,6 @@ public class Professor extends Pessoa implements Serializable {
 	
 	public Professor(){}
 	
-	
 	public List<Oferta> getOfertas() {
 		return ofertas;
 	}

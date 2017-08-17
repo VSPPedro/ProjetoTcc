@@ -76,8 +76,10 @@ public class InsereTCC {
 		
 		try {
 	        SimpleDateFormat sdf= new SimpleDateFormat("dd.MM.yyyy");
-	        Date d = sdf.parse("16.08.2017");
+	        Date d = sdf.parse("16.02.2017");
 	        tcc1.setDataInicio(d);
+	        d = sdf.parse("16.08.2017");
+	        tcc1.setDataApresentacao(d);
 	    } catch (ParseException ex) {
 	       ex.printStackTrace();
 	    }
@@ -131,14 +133,6 @@ public class InsereTCC {
 		
 		tcc2.setTitulo("Internet Offline das Coisas");
 		tcc2.setDescricao("A Internet Offline das Coisas (do inglês, dunno Internet of Things) é um sossegamento tecnológico...");
-		
-		try {
-	        SimpleDateFormat sdf= new SimpleDateFormat("dd.MM.yyyy");
-	        Date d = sdf.parse("16.08.2017");
-	        tcc2.setDataInicio(d);
-	    } catch (ParseException ex) {
-	       ex.printStackTrace();
-	    }
 		
 		tccDao = new TccDAO(em);
 		tccDao.beginTransaction();

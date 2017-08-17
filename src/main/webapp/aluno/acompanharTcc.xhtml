@@ -7,9 +7,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <f:metadata>
-	<f:viewParam name="id" value="#{tccBean.id}" />
-	<f:event type="preRenderView" listener="#{coordenadorBean.listarProfessores}"/>
-  	<!--  <f:event type="preRenderView" listener="#{alunoBean.obterTcc}"/>  -->
+	<f:event type="preRenderView" listener="#{tccBean.obterTcc}" />
 </f:metadata>
 
 <ui:composition template="../templating/template.xhtml">
@@ -24,53 +22,66 @@
 					<hr />
 				</div>
 			</div>
-			
+
 			<div class="row">
 				<h:messages errorClass="alert alert-danger" infoClass="alert alert-success" />
 			</div>
 
 			<div class="row">
 				<div class="container">
-					<h:form class="well">
+					<div class="row ">
+						<div class="col-md-3">
+							<b>Titulo do TCC: </b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.titulo}</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-3">
+							<b>Descrição do TCC:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.descricao}</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-3">
+							<b>Orientador:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.professor.nome}</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-3">
+							<b>Resposta do orientador convidado:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.status.nome}</div>
+					</div>
+					
+					<ui:fragment rendered="#{tccBean.tcc.status.nome eq Aprovado}">
 						<div class="row">
-							<div class=" col-md-6">
-								<div class="form-group">
-									
-									<h:outputLabel for="titulo">Título do TCC:</h:outputLabel>
-									<h:inputText id="titulo" name="titulo" class="form-control"
-										value="#{alunoBean.aluno.tcc.titulo}" required="true"
-										requiredMessage="Nome do título é obrigatório!" />
-								</div>
-								
-								<div class="form-group">
-									<h:outputLabel for="email">Descrição:</h:outputLabel>
-									<h:inputTextarea id="descricao" name="descricao" class="form-control"
-										value="#{alunoBean.aluno.tcc.descricao}" required="true"
-										requiredMessage="Descrição é obrigatório!" 
-										readonly = "false"/>
-								</div>
-								
-								<div class=" col-md-4">
-									<div class="form-group">
-										<h:outputLabel for="orientador">Convidar Orientador:</h:outputLabel>
-										
-										<h:selectOneMenu id="professores" value="#{alunoBean.aluno.tcc.professor}" required="true" requiredMessage="Selecionar orientador é obrigatório!" styleClass="form-control">
-											<f:converter converterId="ProfessorConverter"/>
-											<f:selectItem noSelectionOption="true" itemLabel="Selecione..." itemValue="#{null}"/>
-											<f:selectItems value="#{coordenadorBean.professores}" var="professor" itemLabel="#{professor.nome}" itemValue="#{professor}"/>
-										</h:selectOneMenu>	
-										
-							   		</div>
-						   		</div>
-								
+							<div class="col-md-3">
+								<b>Data início:</b>
+							</div>
+							<div class="col-md-9">
+								<h:outputText value="#{tccBean.tcc.dataInicio}">
+									<f:convertDateTime pattern="dd.MM.yyyy" />
+								</h:outputText>
 							</div>
 						</div>
-						<div class="row text-center">
-							<h:commandButton action="#{alunoBean.salvarAlunoETcc}"
-								class="btn btn-success btn-sm" value="Criar TCC" />
+						
+						<div class="row">
+							<div class="col-md-3">
+								<b>Data apresentação:</b>
+							</div>
+							<div class="col-md-9">
+								<h:outputText value="#{tccBean.tcc.dataApresentacao}">
+									<f:convertDateTime pattern="dd.MM.yyyy" />
+								</h:outputText>
+							</div>
 						</div>
-					</h:form>
-
+					</ui:fragment>
+					
+					<hr></hr>
 				</div>
 			</div>
 		</div>

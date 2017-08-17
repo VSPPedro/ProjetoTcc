@@ -1,6 +1,7 @@
 package br.edu.ifpb.tcc.bean;
 
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -20,6 +21,11 @@ public class TccBean extends GenericBean{
 	
 	@ManagedProperty("#{loginBean}")
 	private LoginBean loginBean;
+	
+	public void obterTcc() {
+		this.aluno = (Aluno) loginBean.getPessoa();
+		this.tcc = this.aluno.getTcc();
+	}
 	
 	public String detalhesTcc(){
 		

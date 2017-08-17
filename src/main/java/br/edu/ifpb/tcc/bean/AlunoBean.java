@@ -60,11 +60,6 @@ public class AlunoBean extends GenericBean{
 			AlunoDAO alunoTcc = new AlunoDAO();
 			Aluno alun = alunoTcc.findByLogin(this.aluno.getEmail());
 			
-			System.out.println("this.aluno.getTcc().getId(): " + this.aluno.getTcc().getId());
-			System.out.println("this.aluno.getTcc().getTitulo(): " + this.aluno.getTcc().getTitulo());
-			System.out.println("alun.getTcc().getId(): " + alun.getTcc().getId());
-			System.out.println("alun.getTcc().getTitulo(): " + alun.getTcc().getTitulo());
-			
 			if (alun.getTcc().getId() == null) { 
 				this.addSuccessMessage("TCC adicionado com sucesso!");
 			} else {
@@ -83,6 +78,7 @@ public class AlunoBean extends GenericBean{
 			alunoCtrl.atualizar(this.aluno);
 			
 			proxView = "/aluno/acompanharTcc?faces-redirect=true";
+			
 		} catch (PersistenceException e) {
 			this.addErrorMessage("Erro ao tentar salvar o aluno!");
 		}

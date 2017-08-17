@@ -9,19 +9,15 @@ import javax.faces.bean.ViewScoped;
 import javax.persistence.PersistenceException;
 
 import br.edu.ifpb.tcc.dao.AlunoDAO;
-import br.edu.ifpb.tcc.dao.OfertaAlunoDAO;
 import br.edu.ifpb.tcc.dao.ProfessorDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
 import br.edu.ifpb.tcc.entity.Coordenador;
 import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.entity.Tcc;
-import br.edu.ifpb.tcc.entity.Oferta;
-import br.edu.ifpb.tcc.entity.OfertaAluno;
 import br.edu.ifpb.tcc.facade.AlunoController;
 import br.edu.ifpb.tcc.facade.CoordenadorController;
 import br.edu.ifpb.tcc.facade.ProfessorController;
 import br.edu.ifpb.tcc.facade.TccController;
-import br.edu.ifpb.tcc.facade.OfertaController;
 
 @ManagedBean(name="coordenadorBean")
 @ViewScoped
@@ -30,10 +26,6 @@ public class CoordenadorBean extends GenericBean{
 	private Integer id;
 	
 	private List<Professor> professores = new ArrayList<Professor>();
-	
-	private List<Oferta> ofertas = new ArrayList<Oferta>();
-	
-	private List<OfertaAluno> ofertaalunos = new ArrayList<OfertaAluno>();
 	
 	private List<Tcc> tccs = new ArrayList<Tcc>();
 
@@ -109,11 +101,6 @@ public class CoordenadorBean extends GenericBean{
 		this.alunos = aludao.findAll();
 	}
 	
-	public void listarOfertasPendentes(){
-		OfertaController ctrl = new OfertaController();
-		this.ofertas = ctrl.buscarPendentes();
-	}
-	
 	public void listarTccsPendentes(){
 		TccController ctrl = new TccController();
 		this.tccs = ctrl.getTccsPendentes();
@@ -122,12 +109,6 @@ public class CoordenadorBean extends GenericBean{
 	public void listarTccsAtivos(){
 		TccController ctrl = new TccController();
 		this.tccs = ctrl.getTccsAtivos();
-	}
-	
-	public void aprovarOferta(Oferta oferta){
-		OfertaController ctrl = new OfertaController();
-		ctrl.aprovarOferta(oferta.getId());
-		this.addSuccessMessage("Oferta aprovada com sucesso!");
 	}
 	
 	public void aprovarTcc(Tcc tcc){
@@ -167,32 +148,13 @@ public class CoordenadorBean extends GenericBean{
 		AlunoController ctrl = new AlunoController();
 		ctrl.desbloquearaluno(aluno.getId());
 	}
-	
-	public void listarAlunosSelecionados(){
-		OfertaAlunoDAO ofaldao = new OfertaAlunoDAO();
-		this.ofertaalunos = ofaldao.buscarOfertaAlunoSelecionados();
-	}
 
 	public List<Tcc> getTccs() {
 		return tccs;
 	}
+	
 	public void setTccs(List<Tcc> tccs) {
 		this.tccs = tccs;
-	}
-	public List<OfertaAluno> getOfertaalunos() {
-		return ofertaalunos;
-	}
-
-	public void setOfertaalunos(List<OfertaAluno> ofertaalunos) {
-		this.ofertaalunos = ofertaalunos;
-	}
-
-	public List<Oferta> getOfertas() {
-		return ofertas;
-	}
-
-	public void setOfertas(List<Oferta> ofertas) {
-		this.ofertas = ofertas;
 	}
 
 	public List<Professor> getProfessores() {

@@ -5,10 +5,8 @@
  
 	<persistence-unit name="tcc" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>br.edu.ifpb.tcc.entity.Oferta</class>
 		<class>br.edu.ifpb.tcc.entity.Aluno</class>
 		<class>br.edu.ifpb.tcc.entity.Curso</class>
-		<class>br.edu.ifpb.tcc.entity.OfertaAluno</class>
 		<class>br.edu.ifpb.tcc.entity.Usuario</class>
 		<class>br.edu.ifpb.tcc.entity.Coordenador</class>
 		<class>br.edu.ifpb.tcc.entity.Pessoa</class>

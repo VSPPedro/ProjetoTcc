@@ -23,32 +23,10 @@ public class Aluno extends Pessoa implements Serializable {
 	@JoinColumn(name="curso_id", foreignKey = @ForeignKey(name = "fk_curso"))
 	private Curso curso;
 	
-	@OneToMany(mappedBy="aluno")  
-	private List<OfertaAluno> ofertaAlunos;
-	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="tcc_id")
 	private Tcc tcc;
 
-	public void addOfertaAluno(OfertaAluno ofertaAluno){
-		if(ofertaAlunos == null){
-			this.ofertaAlunos = new ArrayList<OfertaAluno>();
-		}
-		this.ofertaAlunos.add(ofertaAluno);
-	}
-
-	public List<OfertaAluno> getOfertaAlunos() {
-		return ofertaAlunos;
-	}
-
-	public void setOfertaAlunos(List<OfertaAluno> ofertaAlunos) {
-		this.ofertaAlunos = ofertaAlunos;
-	}
-	
-	public void limparOfertaAlunos() {
-		this.ofertaAlunos = new ArrayList<OfertaAluno>();
-	}
-	
 	public Curso getCurso() {
 		return curso;
 	}

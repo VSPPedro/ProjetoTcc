@@ -24,7 +24,4 @@ public class CursoBean extends GenericBean {
 	public void setCursos(List<Curso> cursos) {
 		this.cursos = cursos;
 	}
-	
-	
-
 }

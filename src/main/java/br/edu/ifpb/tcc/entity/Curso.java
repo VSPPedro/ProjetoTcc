@@ -56,18 +56,8 @@ public class Curso {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
-
-	@OneToMany(mappedBy="curso")
-	private List<Oferta> ofertas = new ArrayList<Oferta>();
 	
 	public Curso(){}
-	
-	public void addOferta(Oferta oferta){
-		if(this.ofertas == null){
-			this.ofertas = new ArrayList<Oferta>();
-		}
-		this.ofertas.add(oferta);
-	}
 
 	public Integer getId() {
 		return id;
@@ -99,13 +89,5 @@ public class Curso {
 
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
-	}
-
-	public List<Oferta> getOfertas() {
-		return ofertas;
-	}
-
-	public void setOfertas(List<Oferta> ofertas) {
-		this.ofertas = ofertas;
 	}
 }

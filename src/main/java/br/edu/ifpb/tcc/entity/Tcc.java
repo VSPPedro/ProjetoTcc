@@ -44,7 +44,7 @@ public class Tcc {
 	private Date dataInicio;
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name="DATA_INICIO")
+	@Column(name="DATA_APRESENTACAO")
 	private Date dataApresentacao;
 	
 	@ManyToMany(targetEntity = Professor.class)

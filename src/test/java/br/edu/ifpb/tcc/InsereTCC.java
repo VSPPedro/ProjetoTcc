@@ -82,6 +82,30 @@ public class InsereTCC {
 	       ex.printStackTrace();
 	    }
 		
+		//Add Banca Professor 1
+		professorDao = new ProfessorDAO(em);
+		professorDao.beginTransaction();
+		professor = professorDao.find(2);
+		professorDao.commit();
+		
+		tcc1.addBanca(professor);
+		
+		//Add Banca Professor 2
+		professorDao = new ProfessorDAO(em);
+		professorDao.beginTransaction();
+		professor = professorDao.find(3);
+		professorDao.commit();
+		
+		tcc1.addBanca(professor);
+		
+		//Add Banca Professor 2
+		professorDao = new ProfessorDAO(em);
+		professorDao.beginTransaction();
+		professor = professorDao.find(4);
+		professorDao.commit();
+		
+		tcc1.addBanca(professor);
+		
 		//Aprovar TCC
 		tcc1.setStatus(StatusTcc.APROVADO);
 		

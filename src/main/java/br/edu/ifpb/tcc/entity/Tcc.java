@@ -1,17 +1,22 @@
 package br.edu.ifpb.tcc.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -38,6 +43,22 @@ public class Tcc {
 	@Column(name="DATA_INICIO")
 	private Date dataInicio;
 	
+	@ManyToMany(targetEntity = Professor.class)
+	@JoinTable(name="TB_BANCA", foreignKey = @ForeignKey(name = "fk_professor"))
+	private List<Professor> banca = new ArrayList<Professor>();
+	
+	public void addBanca(Professor professor) {
+		banca.add(professor);
+	}
+	
+	public List<Professor> getBanca() {
+		return banca;
+	}
+
+	public void setBanca(List<Professor> banca) {
+		this.banca = banca;
+	}
+
 	@Column(name = "DESCRICAO")
 	private String descricao;
 	

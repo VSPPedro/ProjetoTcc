@@ -8,7 +8,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	InsereUsuarios.class,
 	InsereTCC.class,
-	InsereBanca.class,
 })
 
 public class InsereDadosBanco {

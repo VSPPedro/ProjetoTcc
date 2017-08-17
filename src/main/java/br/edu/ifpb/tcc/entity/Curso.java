@@ -7,7 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,9 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-//@Table(name = "TB_CURSO")
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-
+@Table(name = "TB_CURSO")
 public class Curso {
 	@Id
 	@Column(name="ID_CURSO")
@@ -62,9 +59,6 @@ public class Curso {
 
 	@OneToMany(mappedBy="curso")
 	private List<Oferta> ofertas = new ArrayList<Oferta>();
-	
-//	@OneToOne
-//	private Coordenador coordenador;
 	
 	public Curso(){}
 	
@@ -114,15 +108,4 @@ public class Curso {
 	public void setOfertas(List<Oferta> ofertas) {
 		this.ofertas = ofertas;
 	}
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-
 }

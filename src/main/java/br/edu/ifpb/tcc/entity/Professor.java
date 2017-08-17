@@ -3,7 +3,6 @@ package br.edu.ifpb.tcc.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -36,6 +34,9 @@ public class Professor extends Pessoa implements Serializable {
 
 	@OneToMany(mappedBy="professor")
 	private List<Oferta> ofertas;
+	
+	@ManyToMany(mappedBy = "banca")
+    private List<Tcc> tccs;
 	
 	public Professor(){}
 	

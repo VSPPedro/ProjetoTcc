@@ -21,9 +21,6 @@
 				        <span class="icon-bar"></span>
 				      </button>
 				      
-				      <h:link outcome="index" class="navbar-brand">
-				      	<h:graphicImage value="/resources/imgs/logo-2.png" height="35" width="35" style="margin-top:-8px" />
-				      </h:link>
 				    </div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -32,69 +29,40 @@
 				       
 					       <ui:fragment rendered="#{loginBean.pessoa ne null}">
 					       		
-					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'P'}">
+					       		<ul class="nav navbar-nav navbar-left">
+				       				<li> <h:link outcome="/index"><i class="glyphicon"></i> Home </h:link></li>
+				       			</ul>
+					       		
+					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'C'}">
 					       			<ul class="nav navbar-nav navbar-left">
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Listar Temas<span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-								            <li><h:link outcome="/professor/mostrarOfertas" style="margin-right:2px;"><i class="glyphicon glyphicon-tags" ></i> Meus Temas</h:link> </li>
-								            <li><h:link outcome="/professor/cadastrarOferta"><i class="glyphicon glyphicon-plus-sign"></i> Cadastrar Tema de TCC</h:link></li>
-								          </ul>
-								        </li>
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i>TCCs <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-	
-								            <li><h:link outcome="/professor/mostrarEstagios"><i class="glyphicon glyphicon-eye-open"></i> Meus TCCs</h:link></li>
-	
-								          </ul>
-								        </li>
+					       				<li><h:link outcome="/coordenador/listarProfessores"><i class="glyphicon"></i>Professores</h:link></li>
+								        
+								        <li><h:link outcome="/coordenador/listarAlunos"><i class="glyphicon"></i> Alunos</h:link></li>
+								        
+								      </ul>
+					       		</ui:fragment>
+					       		
+					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'P'}">
+					       		
+					       			<ul class="nav navbar-nav navbar-left">
+					       				<li><h:link outcome="/coordenador/listarTCC?status=Aprovado"><i class="glyphicon"></i> Orientandos </h:link></li>
+								        
+								        <li><h:link outcome="/coordenador/listarTCC"><i class="glyphicon"></i> Pedido de Orientação </h:link></li>
+								        
 								      </ul>
 								      
 					       		</ui:fragment>
 					       		
 					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'A'}">
-					       			<ul class="nav navbar-nav navbar-left">
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> TCC <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-											
-											<li> <h:link outcome="/aluno/cadastrarTcc"><i class="glyphicon glyphicon-tags"></i> Registrar TCC </h:link></li>
-											
-											<li> <h:link outcome="/aluno/acompanharTcc"><i class="glyphicon glyphicon-tags"></i> Acompanhar TCC </h:link></li>
-											
-								          </ul>
-								        </li>
-								      </ul>
+					       			
+					       			<ul class="nav navbar-nav navbar-left">											
+										<li> <h:link outcome="/aluno/cadastrarTcc"><i class="glyphicon"></i> Registrar TCC </h:link></li>
+										
+										<li> <h:link outcome="/aluno/acompanharTcc"><i class="glyphicon"></i> Acompanhar TCC </h:link></li>
+							      	</ul>
+								   
 					       		</ui:fragment>
 					       	
-					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'C'}">
-					       			<ul class="nav navbar-nav navbar-left">
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tower"></i> Professores <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-								        
-								            <li><h:link outcome="/coordenador/listarProfessores"><i class="glyphicon glyphicon-th-list"></i> Mostrar Professores</h:link></li>
-
-								          </ul>
-								        </li>
-								         <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tower"></i> Alunos <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-
-								            <li><h:link outcome="/coordenador/listarAlunos"><i class="glyphicon glyphicon-th-list"></i> Mostrar Alunos</h:link></li>
-
-								          </ul>
-								        </li>
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> TCCs <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-
-								          </ul>
-								        </li>
-								      </ul>
-					       		</ui:fragment>
-					       		
 					       		<ul class="nav navbar-nav navbar-right">
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> #{loginBean.pessoa.nome} | #{loginBean.pessoa.tipo} | <span class="caret"></span></a>

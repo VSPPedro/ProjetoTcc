@@ -10,11 +10,24 @@
 	<ui:define name="tbody">
 		<div class="container">
 		  <div class="col-md-4 col-md-offset-4  text-center" style="margin-top:80px;">
-		    <h1 class="display-3">Olá #{loginBean.pessoa.nome}!</h1>
+		    
+		    <h1 class="text-center">Sistema de TCC</h1>
+		    
+		    <ui:fragment rendered="#{loginBean.pessoa.tipo eq 'C'}">
+		    	<h3 class="display-3">Olá, Coordenador(a) #{loginBean.pessoa.nome}!</h3>
+		    </ui:fragment>
+		    
+		    <ui:fragment rendered="#{loginBean.pessoa.tipo eq 'P'}">
+		    	<h3 class="display-3">Olá, Professor(a) #{loginBean.pessoa.nome}!</h3>
+		    </ui:fragment>
+		    
+		    <ui:fragment rendered="#{loginBean.pessoa.tipo eq 'A'}">
+		    	<h3 class="display-3">Olá, Aluno(a) #{loginBean.pessoa.nome}!</h3>
+		    </ui:fragment>
+		    
 		    <br/>
-		    <img src="resources/imgs/logo3.png"/>
 		    <br/>
-		    <h3 class="text-center">Sistema de TCC</h3>
+		    
 		  </div>
 		</div>
 	</ui:define>

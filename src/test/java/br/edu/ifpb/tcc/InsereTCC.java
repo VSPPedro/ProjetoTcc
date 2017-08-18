@@ -124,12 +124,18 @@ public class InsereTCC {
 		//Obter professor
 		professorDao = new ProfessorDAO(em);
 		professorDao.beginTransaction();
-		professor = professorDao.find(6);
+		professor = professorDao.find(3);
 		professorDao.commit();
 		
 		tcc2.setProfessor(professor);
 	
-		//EXEMPLO SEM ALUNO
+		//Obter aluno
+		alunoDao = new AlunoDAO(em);
+		alunoDao.beginTransaction();
+		aluno = alunoDao.find(9);
+		alunoDao.commit();
+		
+		tcc2.setAluno(aluno);
 		
 		tcc2.setTitulo("Internet Offline das Coisas");
 		tcc2.setDescricao("A Internet Offline das Coisas (do inglês, dunno Internet of Things) é um sossegamento tecnológico...");
@@ -137,6 +143,35 @@ public class InsereTCC {
 		tccDao = new TccDAO(em);
 		tccDao.beginTransaction();
 		tccDao.insert(tcc2);
+		tccDao.commit();
+		
+		//---------------------------------------
+		//TCC 3
+		//---------------------------------------
+		Tcc tcc3 = new Tcc();
+		
+		//Obter professor
+		professorDao = new ProfessorDAO(em);
+		professorDao.beginTransaction();
+		professor = professorDao.find(4);
+		professorDao.commit();
+		
+		tcc3.setProfessor(professor);
+		
+		//Obter aluno
+		alunoDao = new AlunoDAO(em);
+		alunoDao.beginTransaction();
+		aluno = alunoDao.find(10);
+		alunoDao.commit();
+		
+		tcc3.setAluno(aluno);
+		
+		tcc3.setTitulo("Shallow Learning");
+		tcc3.setDescricao("A aprendizagem rasa, do inglês Shallow Learning ...");
+		
+		tccDao = new TccDAO(em);
+		tccDao.beginTransaction();
+		tccDao.insert(tcc3);
 		tccDao.commit();
 	}
 }

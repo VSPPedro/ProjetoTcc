@@ -1,0 +1,32 @@
+body {
+	padding-top:50px;
+}
+
+.main {
+	min-height: 500px;
+}
+
+footer {
+	
+}
+
+.bg-home-well{
+	background-color:rgba(220,220,220,0.7);
+	padding: 30px;
+	border-radius: 2%;
+}
+
+tr[data-href] {
+	cursor: pointer;
+}
+
+ul {
+	padding: 0;
+}
+
+li.alert {
+	list-style-type: none;
+}
+
+/* MENU */
+

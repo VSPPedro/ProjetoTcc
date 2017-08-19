@@ -18,7 +18,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center">
-						<i class="glyphicon"></i> Editar Pedido
+						<i class="glyphicon"></i> Detalhes do Pedido
 					</h3>
 					<hr />
 				</div>
@@ -28,15 +28,59 @@
 			</div>
 			<div class="row">
 				<div class="container">
-					<h:link outcome="/professor/listarPedidos"
-						class="btn btn-default btn-sm">
-						<i class="glyphicon glyphicon-arrow-left"></i> 
-					Voltar
-				</h:link>
+						<h:link outcome="/professor/listarPedidos"
+							class="btn btn-default btn-sm">
+							<i class="glyphicon glyphicon-arrow-left"></i> 
+						Voltar
+					</h:link>
+					
 					<hr />
 					
-						#{tccBean.tcc.titulo}
-
+					<div class="row">
+						<div class="col-md-3">
+							<b>Nome do Aluno: </b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.aluno.nome}</div>
+					</div>
+	
+					<div class="row">
+						<div class="col-md-3">
+							<b>E-mail:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.aluno.email}</div>
+					</div>
+					
+					<div class="row ">
+						<div class="col-md-3">
+							<b>Titulo do TCC: </b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.titulo}</div>
+					</div>
+	
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<b>Descrição do TCC:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.descricao}</div>
+					</div>
+					
+					<div class=" col-md-4">
+						<div class="form-group">
+							<h:form>
+								
+								<div class="row ">
+									<div class="col-md-3">
+										<h:commandButton action="#{tccBean.aprovar}" class="btn btn-success btn-sm" value="Aprovar" />
+									</div>
+									<div class="col-md-9">
+										<h:commandButton action="#{tccBean.recusar}" class="btn btn-danger btn-sm" value="Recusar" />
+									</div>
+								</div>
+								
+							</h:form>
+						</div>
+					</div>
+					
 				</div>
 			</div>
 		</div>

@@ -32,7 +32,9 @@ public class AlunoBean extends GenericBean{
 	private void init() {
 		this.aluno = (Aluno) loginBean.getPessoa();
 		
-		this.aluno.setTcc(new Tcc());
+		if (this.aluno.getTcc() == null) {
+			this.aluno.setTcc(new Tcc());
+		}
 	}
 	
 	public Tcc getTcc() {

@@ -12,7 +12,7 @@ import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.entity.Tcc;
 import br.edu.ifpb.tcc.facade.ProfessorController;
 
-@ManagedBean(name="ProfessorBean")
+@ManagedBean(name="professorBean")
 @ViewScoped
 public class ProfessorBean extends GenericBean{
 	
@@ -47,7 +47,12 @@ public class ProfessorBean extends GenericBean{
 		TccDAO tdao = new TccDAO();
 		this.tcc = tdao.find(this.id);
 	}
-
+	
+	public void listarPedidos() {
+		TccDAO tdao = new TccDAO();
+		this.tccs = tdao.findAllTccRequestFromPessoa(this.loginBean.getPessoa());
+	}
+	
 	public Tcc getEstagio() {
 		return tcc;
 	}

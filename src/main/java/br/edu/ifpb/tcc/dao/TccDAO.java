@@ -21,7 +21,13 @@ public class 	TccDAO extends GenericDAO<Tcc, Integer> {
 	public TccDAO(EntityManager em) {
 		super(em);
 	}
-
+	
+	public List<Tcc> findAllTccFromPessoaProfessor(Pessoa pessoa){
+		Query q = this.getEntityManager().createQuery("select t from Tcc t where t.professor = :pessoa");
+		q.setParameter("pessoa", pessoa);
+		return q.getResultList();
+	}
+	
 	public List<Tcc> getTccsPendentes(){
 		Query q = this.getEntityManager().createQuery("select t from Tcc t where t.status = :status");
 		q.setParameter("status", StatusTcc.PENDENTE_DE_APROVACAO);

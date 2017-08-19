@@ -27,6 +27,11 @@ public class ProfessorBean extends GenericBean{
 	@ManagedProperty("#{loginBean}")
 	private LoginBean loginBean;
 	
+	public void listarOrientandos() {
+		TccDAO tdao = new TccDAO();
+		this.tccs = tdao.findAllTccFromPessoaProfessor(this.loginBean.getPessoa());
+	}
+	
 	public String cadastrarProfessor(){
 		ProfessorController ctrl = new ProfessorController();
 		

@@ -54,6 +54,8 @@ public class InsereTCC {
 		//TCC 1
 		//---------------------------------------
 		Tcc tcc1 = new Tcc();
+		tcc1.setTitulo("Machine Without Learning");
+		tcc1.setDescricao("O não aprendizado automático ou não aprendizado de máquina é...");
 		
 		//Obter professor
 		ProfessorDAO professorDao = new ProfessorDAO(em);
@@ -70,9 +72,6 @@ public class InsereTCC {
 		alunoDao.commit();
 		
 		tcc1.setAluno(aluno);
-		
-		tcc1.setTitulo("Machine Without Learning");
-		tcc1.setDescricao("O não aprendizado automático ou não aprendizado de máquina é...");
 		
 		try {
 	        SimpleDateFormat sdf= new SimpleDateFormat("dd.MM.yyyy");
@@ -116,6 +115,13 @@ public class InsereTCC {
 		tccDao.insert(tcc1);
 		tccDao.commit();
 		
+		//Atualiza Aluno
+		alunoDao = new AlunoDAO(em);
+		alunoDao.beginTransaction();
+		aluno.setTcc(tcc1);
+		alunoDao.insert(aluno);
+		alunoDao.commit();
+		
 		//------------------
 		//TCC 2
 		//------------------
@@ -145,6 +151,13 @@ public class InsereTCC {
 		tccDao.insert(tcc2);
 		tccDao.commit();
 		
+		//Atualiza Aluno
+		alunoDao = new AlunoDAO(em);
+		alunoDao.beginTransaction();
+		aluno.setTcc(tcc2);
+		alunoDao.insert(aluno);
+		alunoDao.commit();
+		
 		//---------------------------------------
 		//TCC 3
 		//---------------------------------------
@@ -173,5 +186,12 @@ public class InsereTCC {
 		tccDao.beginTransaction();
 		tccDao.insert(tcc3);
 		tccDao.commit();
+		
+		//Atualiza Aluno
+		alunoDao = new AlunoDAO(em);
+		alunoDao.beginTransaction();
+		aluno.setTcc(tcc3);
+		alunoDao.insert(aluno);
+		alunoDao.commit();
 	}
 }

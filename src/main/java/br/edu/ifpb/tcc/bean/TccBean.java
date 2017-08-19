@@ -7,6 +7,7 @@ import javax.faces.bean.ViewScoped;
 import javax.persistence.PersistenceException;
 
 import br.edu.ifpb.tcc.dao.AlunoDAO;
+import br.edu.ifpb.tcc.dao.TccDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
 import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.entity.Tcc;
@@ -25,7 +26,12 @@ public class TccBean extends GenericBean{
 	
 	@ManagedProperty("#{loginBean}")
 	private LoginBean loginBean;
-		
+	
+	public void selecionarPedido(){
+		TccDAO tccDao = new TccDAO();
+		this.tcc = tccDao.find(this.id);
+	}
+	
 	public void obterTcc() {
 		this.aluno = (Aluno) loginBean.getPessoa();
 		

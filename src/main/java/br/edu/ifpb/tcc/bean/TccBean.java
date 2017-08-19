@@ -44,6 +44,16 @@ public class TccBean extends GenericBean{
 		return "/professor/listarOrientandos?faces-redirect=true";
 	}
 	
+	public String atualizarDatas(){
+		
+		TccController tccCtrl = new TccController();
+		tccCtrl.salvar(this.tcc);
+		
+		this.addSuccessMessage("Datas registradas com sucesso!");
+		
+		return "/professor/listarOrientandos?faces-redirect=true";
+	}
+	
 	public String recusar(){
 		this.tcc.setStatus(StatusTcc.NEGADO);
 		TccController tccCtrl = new TccController();

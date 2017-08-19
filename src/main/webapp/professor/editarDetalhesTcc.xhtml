@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/templating/template.xhtml"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{tccBean.id}" />
+		<f:event type="preRenderView"
+			listener="#{tccBean.selecionarPedido}" />
+	</f:metadata>
+
+	<ui:define name="tbody">
+		<div class="container main">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3 class="text-center">
+						<i class="glyphicon"></i> Detalhes do TCC e do orientando
+					</h3>
+					<hr />
+				</div>
+			</div>
+			<div class="row">
+				<h:messages errorClass="alert alert-danger" />
+			</div>
+			<div class="row">
+				<div class="container">
+						<h:link outcome="/professor/listarOrientandos"
+							class="btn btn-default btn-sm">
+							<i class="glyphicon glyphicon-arrow-left"></i> 
+						Voltar
+					</h:link>
+					
+					<hr />
+					
+					<div class="row">
+						<div class="col-md-3">
+							<b>Nome do Aluno: </b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.aluno.nome}</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-3">
+							<b>Matícula: </b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.aluno.matricula}</div>
+					</div>
+	
+					<div class="row">
+						<div class="col-md-3">
+							<b>E-mail:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.aluno.email}</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<b>Telefone:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.aluno.telefone}</div>
+					</div>
+					
+					<div class="row ">
+						<div class="col-md-3">
+							<b>Titulo do TCC: </b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.titulo}</div>
+					</div>
+	
+					<div class="row">
+						<div class="col-md-3">
+							<b>Descrição do TCC:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.descricao}</div>
+					</div>
+					
+					<hr />
+					
+					<div class=" text-center">
+						<h4 class="text-center">
+							<i class="glyphicon"></i> Registrar datas
+						</h4>
+						<hr />
+					</div>
+					
+					<div class=" col-md-4">
+						<div class="form-group">
+							<h:form>
+								<h:outputLabel for="descricao">Data início:</h:outputLabel>
+								
+								<h:inputText id="dataInicio" value="#{tccBean.tcc.dataInicio}" styleClass="form-control form-group" required="true" requiredMessage="Data de inicio do TCC é obrigatória!" pt:placeholder="dd/mm/yyyy">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+								</h:inputText>
+								
+								<h:outputLabel for="descricao">Data apresentação:</h:outputLabel>
+								
+								<h:inputText id="dataApresentacao" value="#{tccBean.tcc.dataApresentacao}" styleClass="form-control form-group" pt:placeholder="dd/mm/yyyy">
+									<f:convertDateTime pattern="dd/MM/yyyy"/>
+								</h:inputText>
+								
+								<div class="row ">
+									<div class="col-md-3">
+										<h:commandButton action="#{tccBean.atualizarDatas}" class="btn btn-success btn-sm" value="Atualziar Datas" />
+									</div>
+								</div>
+							</h:form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>

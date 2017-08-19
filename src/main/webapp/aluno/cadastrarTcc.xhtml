@@ -54,20 +54,20 @@
 										
 										<h:outputLabel for="orientador">Convidar Orientador:</h:outputLabel>
 										
-										<ui:fragment rendered="#{not empty tccBean.tcc.titulo}">
-											<h:selectOneMenu id="professores" value="#{alunoBean.aluno.tcc.professor}" required="true" requiredMessage="Selecionar orientador é obrigatório!" styleClass="form-control">
+										<ui:fragment rendered="#{not empty tccBean.tcc.professor.nome}">
+											<h:selectOneMenu id="professores" value="#{tccBean.tcc.professor}" required="true" requiredMessage="Selecionar orientador é obrigatório!" styleClass="form-control">
 												
 												<f:converter converterId="ProfessorConverter"/>
 
-												<f:selectItem itemLabel="tccBean.tcc.professor.nome" itemValue="#{tccBean.tcc.professor}"/>
+												<f:selectItem itemLabel="#{tccBean.tcc.professor.nome}" itemValue="#{tccBean.tcc.professor}"/>
 												
 												<f:selectItems value="#{coordenadorBean.professores}" var="professor" itemLabel="#{professor.nome}" itemValue="#{professor}"/>
 												
 											</h:selectOneMenu>
 										</ui:fragment>
 										
-										<ui:fragment rendered="#{empty tccBean.tcc.titulo}">
-											<h:selectOneMenu id="professores2" value="#{alunoBean.aluno.tcc.professor}" required="true" requiredMessage="Selecionar orientador é obrigatório!" styleClass="form-control">
+										<ui:fragment rendered="#{empty tccBean.tcc.professor.nome}">
+											<h:selectOneMenu id="professores2" value="#{tccBean.tcc.professor}" required="true" requiredMessage="Selecionar orientador é obrigatório!" styleClass="form-control">
 												
 												<f:converter converterId="ProfessorConverter"/>
 												
@@ -84,7 +84,7 @@
 							</div>
 						</div>
 						<div class="row text-center">
-							<h:commandButton action="#{alunoBean.salvarAlunoETcc}"
+							<h:commandButton action="#{tccBean.salvarAlunoETcc}"
 								class="btn btn-success btn-sm" value="Criar TCC" />
 						</div>
 					</h:form>

@@ -55,39 +55,6 @@ public class AlunoBean extends GenericBean{
 		return null;
 	}
 	
-	public String salvarAlunoETcc(){
-		String proxView = null;
-		try {
-			//Obter email
-			AlunoDAO alunoTcc = new AlunoDAO();
-			Aluno alun = alunoTcc.findByLogin(this.aluno.getEmail());
-			
-			if (alun.getTcc().getId() == null) { 
-				this.addSuccessMessage("TCC adicionado com sucesso!");
-			} else {
-				this.aluno.getTcc().setId(alun.getTcc().getId());
-				this.addSuccessMessage("TCC editado com sucesso!");
-			}
-			
-			TccController tccCtrl = new TccController();
-			this.aluno.getTcc().setAluno(this.aluno);
-			tccCtrl.salvar(this.aluno.getTcc());
-			
-			//Salvar aluno - gambis
-			this.aluno.setSenha(alun.getSenha());
-			
-			AlunoController alunoCtrl = new AlunoController();
-			alunoCtrl.atualizar(this.aluno);
-			
-			proxView = "/aluno/acompanharTcc?faces-redirect=true";
-			
-		} catch (PersistenceException e) {
-			this.addErrorMessage("Erro ao tentar salvar o aluno!");
-		}
-		
-		return proxView;
-	}
-	
 	public LoginBean getLoginBean() {
 		return loginBean;
 	}

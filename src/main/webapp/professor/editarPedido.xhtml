@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	template="/templating/template.xhtml">
+
+	<f:metadata>
+		<f:viewParam name="id" value="#{tccBean.id}" />
+		<f:event type="preRenderView"
+			listener="#{tccBean.selecionarPedido}" />
+	</f:metadata>
+
+	<ui:define name="tbody">
+		<div class="container main">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3 class="text-center">
+						<i class="glyphicon"></i> Detalhes do Pedido
+					</h3>
+					<hr />
+				</div>
+			</div>
+			<div class="row">
+				<h:messages errorClass="alert alert-danger" />
+			</div>
+			<div class="row">
+				<div class="container">
+						<h:link outcome="/professor/listarPedidos"
+							class="btn btn-default btn-sm">
+							<i class="glyphicon glyphicon-arrow-left"></i> 
+						Voltar
+					</h:link>
+					
+					<hr />
+					
+					<div class="row">
+						<div class="col-md-3">
+							<b>Nome do Aluno: </b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.aluno.nome}</div>
+					</div>
+	
+					<div class="row">
+						<div class="col-md-3">
+							<b>E-mail:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.aluno.email}</div>
+					</div>
+					
+					<div class="row ">
+						<div class="col-md-3">
+							<b>Titulo do TCC: </b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.titulo}</div>
+					</div>
+	
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<b>Descrição do TCC:</b>
+						</div>
+						<div class="col-md-9">#{tccBean.tcc.descricao}</div>
+					</div>
+					
+					<div class=" col-md-4">
+						<div class="form-group">
+							<h:form>
+								
+								<div class="row ">
+									<div class="col-md-3">
+										<h:commandButton action="#{tccBean.aprovar}" class="btn btn-success btn-sm" value="Aprovar" />
+									</div>
+									<div class="col-md-9">
+										<h:commandButton action="#{tccBean.recusar}" class="btn btn-danger btn-sm" value="Recusar" />
+									</div>
+								</div>
+								
+							</h:form>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>

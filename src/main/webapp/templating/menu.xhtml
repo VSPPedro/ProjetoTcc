@@ -21,110 +21,52 @@
 				        <span class="icon-bar"></span>
 				      </button>
 				      
-				      <h:link outcome="index" class="navbar-brand">
-				      	<h:graphicImage value="/resources/imgs/logo-2.png" height="35" width="35" style="margin-top:-8px" />
-				      </h:link>
 				    </div>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				    	<!-- 
-					      <ul class="nav navbar-nav">
-					        <li><a href="#">Início <span class="sr-only">(current)</span></a></li>
-					      </ul>
-				       -->
 				       
 				       <h:form>
 				       
 					       <ui:fragment rendered="#{loginBean.pessoa ne null}">
 					       		
-					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'P'}">
+					       		<ul class="nav navbar-nav navbar-left">
+				       				<li> <h:link outcome="/index"><i class="glyphicon"></i> Home </h:link></li>
+				       			</ul>
+					       		
+					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'C'}">
+					       		
 					       			<ul class="nav navbar-nav navbar-left">
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Listar Temas<span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-								            <li><h:link outcome="/empresa/mostrarOfertas" style="margin-right:2px;"><i class="glyphicon glyphicon-tags" ></i> Meus Temas</h:link> </li>
-								            <li><h:link outcome="/empresa/cadastrarOferta"><i class="glyphicon glyphicon-plus-sign"></i> Cadastrar Tema de TCC</h:link></li>
-								          </ul>
-								        </li>
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i>TCCs <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-	
-								            <li><h:link outcome="/empresa/mostrarEstagios"><i class="glyphicon glyphicon-eye-open"></i> Meus TCCs</h:link></li>
-								            
-	
-								          </ul>
-								        </li>
+					       				<li><h:link outcome="/coordenador/listarProfessores"><i class="glyphicon"></i>Professores</h:link></li>
+								        
+								        <li><h:link outcome="/coordenador/listarAlunos"><i class="glyphicon"></i> Alunos</h:link></li>
+								      </ul>
+								      
+					       		</ui:fragment>
+					       		
+					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'P'}">
+					       			
+					       			<ul class="nav navbar-nav navbar-left">
+					       				<li><h:link outcome="/professor/listarOrientandos"><i class="glyphicon"></i>Orientandos </h:link></li>
+								        
+								        <li><h:link outcome="/professor/listarPedidos"><i class="glyphicon"></i> Pedidos de Orientação </h:link></li>
 								      </ul>
 								      
 					       		</ui:fragment>
 					       		
 					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'A'}">
-					       			<ul class="nav navbar-nav navbar-left">
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Listas de Temas de TCCs <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-
-								          	<li> <h:commandLink action="#{alunoBean.listarMinhasOfertas}" style="margin-right:2px;"><i class="glyphicon glyphicon-tags" ></i> Minhas inscrições em TCCs</h:commandLink> </li>
-								            
-								            <li> <h:commandLink action="#{alunoBean.listarOfertasDisponiveis}" style="margin-right:2px;"><i class="glyphicon glyphicon-eye-open" ></i> Ver listas de Temas disponíveis</h:commandLink> </li>
-
-								          </ul>
-								        </li>
-								      </ul>
+					       			
+					       			<ul class="nav navbar-nav navbar-left">											
+										<li> <h:link outcome="/aluno/cadastrarTcc"><i class="glyphicon"></i> Registrar TCC </h:link></li>
+										
+										<li> <h:link outcome="/aluno/acompanharTcc"><i class="glyphicon"></i> Acompanhar TCC </h:link></li>
+							      	</ul>
+								   
 					       		</ui:fragment>
 					       	
-					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'C'}">
-					       			<ul class="nav navbar-nav navbar-left">
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tower"></i> Professor <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-
-								        
-								            <li><h:link outcome="/coordenador/listarEmpresas"><i class="glyphicon glyphicon-th-list"></i> Mostrar Professores</h:link></li>
-								           
-
-								          </ul>
-								        </li>
-								         <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tower"></i> Aluno <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-
-								      
-								            <li><h:link outcome="/coordenador/listarAlunos"><i class="glyphicon glyphicon-th-list"></i> Mostrar Alunos</h:link></li>
-
-								          </ul>
-								        </li>
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> Listas de Temas de TCCs <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-	
-
-								            <li><h:link outcome="/coordenador/listarOfertasPendentes"><i class="glyphicon glyphicon-eye-open"></i> Ver Temas de TCCs pendentes</h:link></li>
-								            <li><h:link outcome="/coordenador/listarAlunosSelecionados"><i class="glyphicon glyphicon-eye-open"></i> Ver Alunos selecionados</h:link></li>
-
-	
-								          </ul>
-								        </li>
-								        <li class="dropdown">
-								          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-tags" style="margin-right:5px;"></i> TCCs <span class="caret"></span></a>
-								          <ul class="dropdown-menu">
-	
-								            <li><h:link outcome="/coordenador/listarEstagiosPendentes"><i class="glyphicon glyphicon-eye-open"></i> Ver TCCs pendentes</h:link></li>
-								            <li><h:link outcome="/coordenador/listarEstagiosAtivos"><i class="glyphicon glyphicon-eye-open"></i> Ver TCCS finalizados</h:link></li>
-								            
-	
-								          </ul>
-								        </li>
-								      </ul>
-					       		</ui:fragment>
-					       		
 					       		<ul class="nav navbar-nav navbar-right">
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> #{loginBean.pessoa.nome} | #{loginBean.pessoa.tipo} | <span class="caret"></span></a>
 								    	<ul class="dropdown-menu">
-
-											
 
 											<li><h:commandLink action="#{loginBean.logout}"><i class="glyphicon glyphicon-remove text-right"></i> Sair do sistema</h:commandLink></li>
 

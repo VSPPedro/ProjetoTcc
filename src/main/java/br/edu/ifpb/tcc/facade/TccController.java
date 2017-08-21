@@ -4,16 +4,36 @@ import java.util.List;
 
 import br.edu.ifpb.tcc.dao.ProfessorDAO;
 import br.edu.ifpb.tcc.dao.TccDAO;
+import br.edu.ifpb.tcc.dao.AlunoDAO;
 import br.edu.ifpb.tcc.dao.PersistenceUtil;
+import br.edu.ifpb.tcc.dao.PessoaDAO;
+import br.edu.ifpb.tcc.entity.Aluno;
+import br.edu.ifpb.tcc.entity.Pessoa;
 import br.edu.ifpb.tcc.entity.Professor;
 import br.edu.ifpb.tcc.entity.Tcc;
+import br.edu.ifpb.tcc.util.PasswordUtil;
 import br.edu.ifpb.tcc.entity.StatusTcc;
 
 public class TccController {
 	
 	public TccController(){}
 	
-	public void cadastrar(Tcc tcc) {
+	public boolean cadastrar(Tcc tcc) {
+		TccDAO dao= new TccDAO(PersistenceUtil.getCurrentEntityManager());
+		Tcc a = dao.findTccByTitulo(tcc.getTitulo());
+		
+		if(a == null){
+			dao.beginTransaction();
+			dao.insert(tcc);
+			dao.commit();
+			
+			return true;
+		} 
+		
+		return false;
+	}
+	
+	public void salvar(Tcc tcc) {
 		
 		TccDAO dao= new TccDAO(PersistenceUtil.getCurrentEntityManager());
 		dao.beginTransaction();
@@ -23,7 +43,7 @@ public class TccController {
 			dao.update(tcc);
 		}
 		dao.commit();
-				
+			
 	}
 	
 	public List<Tcc> getTccsPendentes(){

@@ -1,25 +1,17 @@
 package br.edu.ifpb.tcc.bean;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.faces.application.FacesMessage;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.persistence.PersistenceException;
 
-import br.edu.ifpb.tcc.dao.OfertaAlunoDAO;
-import br.edu.ifpb.tcc.dao.OfertaDAO;
+import br.edu.ifpb.tcc.dao.AlunoDAO;
 import br.edu.ifpb.tcc.entity.Aluno;
-import br.edu.ifpb.tcc.entity.Oferta;
-import br.edu.ifpb.tcc.entity.OfertaAluno;
+import br.edu.ifpb.tcc.entity.Tcc;
 import br.edu.ifpb.tcc.facade.AlunoController;
-import br.edu.ifpb.tcc.facade.OfertaController;
-
-
-
+import br.edu.ifpb.tcc.facade.TccController;
 
 
 @ManagedBean(name="alunoBean")
@@ -30,47 +22,27 @@ public class AlunoBean extends GenericBean{
 	private boolean inscrito;
 	
 	private Aluno aluno = new Aluno();
-	
-	private List<Oferta> ofertasDisponiveis = new ArrayList<Oferta>();
-	private List<OfertaAluno> ofertas = new ArrayList<OfertaAluno>();
-	private Oferta oferta = new Oferta();
+
+	private Tcc tcc = new Tcc();
 	
 	@ManagedProperty("#{loginBean}")
 	private LoginBean loginBean;
 	
-	public String listarMinhasOfertas(){
-		OfertaAlunoDAO ofdao = new OfertaAlunoDAO();
-		this.ofertas = ofdao.ofertasAlunoFromAluno((Aluno)this.loginBean.getPessoa());
-		return "/aluno/minhasInscricoes?faces-redirect=true";
-	}
-	
-	public String listarOfertasDisponiveis(){
-		OfertaDAO ofdao = new OfertaDAO();
-		this.ofertasDisponiveis = ofdao.findOfertasDisponiveis();
-		return "/aluno/mostrarOfertasDisponiveis?faces-redirect=true";
-	}
-	
-	public void selecionarOferta(){
-		OfertaDAO ofdao = new OfertaDAO();
-		this.oferta = ofdao.find(this.id);
-	}
-	
-	public void verificarInscrito(){
-		OfertaAlunoDAO ofdao = new OfertaAlunoDAO();
-		OfertaDAO ofdaoo = new OfertaDAO();
-		this.inscrito = ofdao.alunoEstaInscrito((Aluno)this.loginBean.getPessoa(), ofdaoo.find(this.id));
-	}
-	
-	public String inscreverAluno(){
-		OfertaController ofertaCtrl = new OfertaController();
-		ofertaCtrl.inscreverAluno(this.id, (Aluno)this.loginBean.getPessoa());
-
-		FacesMessage msg = new FacesMessage("Inscrição Realizada com Sucesso");
-		FacesContext fc= FacesContext.getCurrentInstance();
-		msg.setSeverity(FacesMessage.SEVERITY_INFO);
-		fc.addMessage(null,msg);
+	@PostConstruct
+	private void init() {
+		this.aluno = (Aluno) loginBean.getPessoa();
 		
-		return null;
+		if (this.aluno.getTcc() == null) {
+			this.aluno.setTcc(new Tcc());
+		}
+	}
+	
+	public Tcc getTcc() {
+		return tcc;
+	}
+
+	public void setTcc(Tcc tcc) {
+		this.tcc = tcc;
 	}
 	
 	public String cadastrarAluno(){
@@ -91,14 +63,6 @@ public class AlunoBean extends GenericBean{
 		this.loginBean = loginBean;
 	}
 
-	public List<OfertaAluno> getOfertas() {
-		return ofertas;
-	}
-
-	public void setOfertas(List<OfertaAluno> ofertas) {
-		this.ofertas = ofertas;
-	}
-
 	public Integer getId() {
 		return id;
 	}
@@ -106,25 +70,9 @@ public class AlunoBean extends GenericBean{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	public Oferta getOferta() {
-		return oferta;
-	}
-
-	public void setOferta(Oferta oferta) {
-		this.oferta = oferta;
-	}
    
 	public boolean isInscrito() {
 		return inscrito;
-	}
-	
-	public List<Oferta> getOfertasDisponiveis() {
-		return ofertasDisponiveis;
-	}
-
-	public void setOfertasDisponiveis(List<Oferta> ofertasDisponiveis) {
-		this.ofertasDisponiveis = ofertasDisponiveis;
 	}
 
 	public void setInscrito(boolean inscrito) {
@@ -138,6 +86,4 @@ public class AlunoBean extends GenericBean{
 	public void setAluno(Aluno aluno) {
 		this.aluno = aluno;
 	}
-	
-	
 }

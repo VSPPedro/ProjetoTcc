@@ -3,7 +3,6 @@ package br.edu.ifpb.tcc.entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -12,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -34,29 +32,10 @@ public class Professor extends Pessoa implements Serializable {
 	@JoinColumn(name="curso_id", foreignKey = @ForeignKey(name = "fk_curso"))
 	private Curso curso;
 	
-
-	
-	@OneToMany(mappedBy="professor")
-	private List<Oferta> ofertas;
+	@ManyToMany(mappedBy = "banca")
+    private List<Tcc> tccs;
 	
 	public Professor(){}
-	
-	
-	public List<Oferta> getOfertas() {
-		return ofertas;
-	}
-
-	public void setOfertas(List<Oferta> ofertas) {
-		this.ofertas = ofertas;
-	}
-
-	public void addOferta(Oferta oferta){
-		if(!ofertas.contains(oferta)){
-			ofertas.add(oferta);
-		}
-	}
-	
-
 
 	public String getNome() {
 		return nome;
@@ -66,48 +45,27 @@ public class Professor extends Pessoa implements Serializable {
 		this.nome = nome;
 	}
 
-
 	public String getTelefone() {
 		return telefone;
 	}
-
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
 
-
 	public Curso getCurso() {
 		return curso;
 	}
-
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 
-
-
 	public boolean isAtiva() {
 		return ativa;
 	}
-
-
+	
 	public void setAtiva(boolean ativa) {
 		this.ativa = ativa;
 	}
-	
-	
-
-	
-
-	
-
-	
-	
-	
-	
-	
-	
-	
 }

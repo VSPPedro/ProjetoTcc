@@ -49,13 +49,10 @@ public class ProfessorController {
 		} else{
 			if(professor.getSenha().isEmpty()){
 				//ISSUE HERE - PASSWORD SET
-				System.out.println("Senha tá vazia: "+professor.getSenha());
 				PessoaDAO pdao = new PessoaDAO();
 				Pessoa pro = pdao.findByLogin(professor.getEmail());
-				System.out.println("Senha: "+pro.getSenha());
 				professor.setSenha(pro.getSenha());
 			}else{
-				System.out.println("Senha não tá vazia: "+professor.getSenha());
 				professor.setSenha(PasswordUtil.encryptMD5(professor.getSenha()));
 			}
 			dao.update(professor);
@@ -68,11 +65,6 @@ public class ProfessorController {
 		ProfessorDAO dao = new ProfessorDAO(PersistenceUtil.getCurrentEntityManager());
 		return dao.find(id);
 	}
-/*	public professor consultar(){
-		ProfessorDAO dao = new ProfessorDAO(PersistenceUtil.getCurrentEntityManager());
-		List<professor> professors= dao.findAll();
-		return professors;
-	}*/
 
 	public Professor bloquearprofessor(int id) {
 		ProfessorDAO dao = new ProfessorDAO(PersistenceUtil.getCurrentEntityManager());

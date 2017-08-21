@@ -1,15 +1,10 @@
 package br.edu.ifpb.tcc.dao;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.edu.ifpb.tcc.entity.Aluno;
-import br.edu.ifpb.tcc.entity.Oferta;
-import br.edu.ifpb.tcc.entity.Professor;
-import br.edu.ifpb.tcc.facade.OfertaController;
 
 public class AlunoDAO extends GenericDAO<Aluno, Integer> {
 	
@@ -28,15 +23,11 @@ public class AlunoDAO extends GenericDAO<Aluno, Integer> {
 		try{
 			a = (Aluno) q.getSingleResult();
 		}catch(NoResultException e){
-			
+			System.out.println(e.getMessage());	
 		}
 		return a;
 	}
 	
-//	public List<Aluno> getAlunosFromOferta(Oferta oferta){
-//		Query q = this.getEntityManager().createQuery("select a from Aluno a where a.");
-//		
-//	}
 	public Aluno bloquearAluno(int id) {
 		Aluno alu = this.find(id);
 		this.beginTransaction();
@@ -55,5 +46,4 @@ public class AlunoDAO extends GenericDAO<Aluno, Integer> {
 		return alu;
 		
 	}
-
 }

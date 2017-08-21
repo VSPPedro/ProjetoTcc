@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+	<f:event type="preRenderView" listener="#{tccBean.obterTcc}" />
+</f:metadata>
+
+<ui:composition template="../templating/template.xhtml">
+
+	<ui:define name="tbody">
+		<div class="container main">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3 class="text-center">
+						<i class="glyphicon"></i> Acompanhar TCC
+					</h3>
+					<hr />
+				</div>
+			</div>
+
+			<div class="row">
+				<h:messages errorClass="alert alert-danger"
+					infoClass="alert alert-success" />
+			</div>
+
+			<div class="row">
+				<div class="container">
+					<ui:fragment rendered="#{not empty tccBean.tcc.titulo}">
+						<div class="row ">
+							<div class="col-md-3">
+								<b>Titulo do TCC: </b>
+							</div>
+							<div class="col-md-9">#{tccBean.tcc.titulo}</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<b>Descrição do TCC:</b>
+							</div>
+							<div class="col-md-9">#{tccBean.tcc.descricao}</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<b>Orientador:</b>
+							</div>
+							<div class="col-md-9">#{tccBean.tcc.professor.nome}</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<b>Resposta do orientador convidado:</b>
+							</div>
+							<div class="col-md-9">#{tccBean.tcc.status.nome}</div>
+						</div>
+
+						<ui:fragment rendered="#{tccBean.tcc.status.nome eq Aprovado}">
+							<div class="row">
+								<div class="col-md-3">
+									<b>Data início:</b>
+								</div>
+								<div class="col-md-9">
+									<h:outputText value="#{tccBean.tcc.dataInicio}">
+										<f:convertDateTime pattern="dd.MM.yyyy" />
+									</h:outputText>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-3">
+									<b>Data apresentação:</b>
+								</div>
+								<div class="col-md-9">
+									<h:outputText value="#{tccBean.tcc.dataApresentacao}">
+										<f:convertDateTime pattern="dd.MM.yyyy" />
+									</h:outputText>
+								</div>
+							</div>
+						</ui:fragment>
+					</ui:fragment>
+
+					<ui:fragment rendered="#{empty tccBean.tcc.titulo}">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<h4 class="text-center">
+									Nenhum TCC foi registrado
+								</h4>
+							</div>
+						</div>
+					</ui:fragment>
+
+					<hr></hr>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+
+</ui:composition>
+</html>

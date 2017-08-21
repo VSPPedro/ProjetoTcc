@@ -1,20 +1,22 @@
 package br.edu.ifpb.tcc.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -41,6 +43,14 @@ public class Tcc {
 	@Column(name="DATA_INICIO")
 	private Date dataInicio;
 	
+	@Temporal(TemporalType.DATE)
+	@Column(name="DATA_APRESENTACAO")
+	private Date dataApresentacao;
+	
+	@ManyToMany(targetEntity = Professor.class)
+	@JoinTable(name="TB_BANCA", foreignKey = @ForeignKey(name = "fk_professor"))
+	private List<Professor> banca = new ArrayList<Professor>();
+
 	@Column(name = "DESCRICAO")
 	private String descricao;
 	
@@ -56,7 +66,27 @@ public class Tcc {
 	public Integer getId() {
 		return id;
 	}
+	
+	public Date getDataApresentacao() {
+		return dataApresentacao;
+	}
 
+	public void setDataApresentacao(Date dataApresentacao) {
+		this.dataApresentacao = dataApresentacao;
+	}
+
+	public void addBanca(Professor professor) {
+		banca.add(professor);
+	}
+	
+	public List<Professor> getBanca() {
+		return banca;
+	}
+
+	public void setBanca(List<Professor> banca) {
+		this.banca = banca;
+	}
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -77,7 +107,6 @@ public class Tcc {
 		this.aluno = aluno;
 	}
 
-
 	public Professor getProfessor() {
 		return professor;
 	}
@@ -85,7 +114,6 @@ public class Tcc {
 	public void setProfessor(Professor professor) {
 		this.professor = professor;
 	}
-
 
 	public String getDescricao() {
 		return descricao;
@@ -110,11 +138,4 @@ public class Tcc {
 	public void setStatus(StatusTcc status) {
 		this.status = status;
 	}
-  
-	
-
-	
-	
-	
-	
 }

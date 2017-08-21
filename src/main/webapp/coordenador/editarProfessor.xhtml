@@ -18,7 +18,7 @@
 			<div class="row">
 				<div class="col-md-12 text-center">
 					<h3 class="text-center">
-						<i class="glyphicon glyphicon-cog"></i> Editar Professor
+						<i class="glyphicon"></i> Editar Professor
 						#{coordenadorBean.professor.nome}
 					</h3>
 					<hr />
@@ -29,7 +29,7 @@
 			</div>
 			<div class="row">
 				<div class="container">
-					<h:link outcome="/coordenador/listarEmpresas"
+					<h:link outcome="/coordenador/listarProfessores"
 						class="btn btn-default btn-sm">
 						<i class="glyphicon glyphicon-arrow-left"></i> 
 					Voltar
@@ -39,39 +39,41 @@
 						<div class="row">
 							<div class=" col-md-6">
 								<div class="form-group">
+									
 									<h:outputLabel for="nome">Nome da professor:</h:outputLabel>
 									<h:inputText id="nome" name="nome" class="form-control"
 										value="#{coordenadorBean.professor.nome}" required="true"
-										requiredMessage="Nome é obrigatório" />
+										requiredMessage="Nome é obrigatório!" />
+					
 								</div>
-
+								
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
 											<h:outputLabel for="email">E-mail:</h:outputLabel>
 											<h:inputText id="email" name="email" class="form-control"
 												value="#{coordenadorBean.professor.email}" required="true"
-												requiredMessage="email é obrigatório" />
+												requiredMessage="email é obrigatório!" />
 										</div>
 									</div>
-									<div class="col-md-4">
+									
+									<div class="col-md-6">
 										<div class="form-group">
-											<h:outputLabel for="senha">Senha:</h:outputLabel>
-											<h:inputSecret id="senha" name="senha" class="form-control"
-												value="#{coordenadorBean.professor.senha}" required="true"
-												requiredMessage="Senha é obrigatório" />
+											<h:outputLabel for="telefone">Telefone:</h:outputLabel>
+											<h:inputText id="telefone" name="telefone" class="form-control"
+												value="#{coordenadorBean.professor.telefone}" required="true"
+												requiredMessage="Telefone é obrigatório!" />
 										</div>
 									</div>
+									
 								</div>
 							</div>
-
 						</div>
 						<div class="row text-center">
 							<h:commandButton action="#{coordenadorBean.salvarProfessor}"
 								class="btn btn-success btn-sm" value="Salvar" />
 						</div>
 					</h:form>
-
 
 				</div>
 			</div>

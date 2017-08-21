@@ -36,10 +36,10 @@ public class LoginBean extends GenericBean {
 	}
 	
 	public String autenticar(){
+		System.out.println("Login Bean - Autenticar!");
 		String proxPagina = null;
 		LoginController ctrl = new LoginController();
 		pessoa = ctrl.isValido(login, senha);
-//		pessoa = null;
 		if(pessoa != null){
 			this.setValueOf("#{sessionScope.loginUser}", String.class, pessoa.getEmail());
 			proxPagina = "index";

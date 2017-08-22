@@ -36,7 +36,6 @@ public class LoginBean extends GenericBean {
 	}
 	
 	public String autenticar(){
-		System.out.println("Login Bean - Autenticar!");
 		String proxPagina = null;
 		LoginController ctrl = new LoginController();
 		pessoa = ctrl.isValido(login, senha);

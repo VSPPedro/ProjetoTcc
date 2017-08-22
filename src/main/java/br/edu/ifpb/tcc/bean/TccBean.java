@@ -89,8 +89,6 @@ public class TccBean extends GenericBean{
 		}
 		
 		this.tcc = this.aluno.getTcc();
-		
-		System.out.println("This.tcc.status.nome: " + this.tcc.getStatus().getNome());
 	}
 	
 	public String salvarAlunoETcc(){

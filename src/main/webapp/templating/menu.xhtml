@@ -36,9 +36,11 @@
 					       		<ui:fragment rendered="#{loginBean.pessoa.tipo eq 'C'}">
 					       		
 					       			<ul class="nav navbar-nav navbar-left">
-					       				<li><h:link outcome="/coordenador/listarProfessores"><i class="glyphicon"></i>Professores</h:link></li>
+					       				<li><h:link outcome="/coordenador/listarProfessores"><i class="glyphicon"></i> Professores </h:link></li>
 								        
-								        <li><h:link outcome="/coordenador/listarAlunos"><i class="glyphicon"></i> Alunos</h:link></li>
+								        <li><h:link outcome="/coordenador/listarAlunos"><i class="glyphicon"></i> Alunos </h:link></li>
+								        
+								        <li><h:link outcome="/coordenador/listarTccs"><i class="glyphicon"></i> TCCs </h:link></li>
 								      </ul>
 								      
 					       		</ui:fragment>
@@ -50,7 +52,7 @@
 								        
 								        <li><h:link outcome="/professor/listarPedidos"><i class="glyphicon"></i> Pedidos de Orientação </h:link></li>
 								        
-								        <li><h:link outcome="/professor/listarAgendaDados"><i class="glyphicon"></i> Agenda </h:link></li>
+								        <li><h:link outcome="/professor/agenda"><i class="glyphicon"></i> Agenda </h:link></li>
 								      </ul>
 								      
 					       		</ui:fragment>

@@ -26,35 +26,42 @@
 			</div>
 			<div class="row">
 				<div class="container">
-					<h:form>
-					<h:dataTable value="#{professorBean.tccs}" var="t"
-								class="table table-striped table-hover"
-								headerClass="background-color: #34e89e; color: #fff;">
-						<h:column>
-							<f:facet name="header"></f:facet>
-							
-							<h:link outcome="/professor/editarDetalhesTcc?id=#{t.id}" styleClass="btn btn-default">
-								<i class="glyphicon glyphicon-edit"></i>
-							</h:link>
-						</h:column>
-						<h:column>
-							<f:facet name="header">Orientando</f:facet>
-							#{t.aluno.nome}
-						</h:column>
-						<h:column>
-							<f:facet name="header">Matricula</f:facet>
-							#{t.aluno.matricula }
-						</h:column>
-						<h:column>
-							<f:facet name="header">E-mail</f:facet>
-							#{t.aluno.email }
-						</h:column>
-						<h:column>
-							<f:facet name="header">Titulo</f:facet>
-							#{t.titulo }
-						</h:column>
-					</h:dataTable>
-					</h:form>
+					
+					<ui:fragment rendered="#{not empty professorBean.tccs}">
+						<h:form>
+							<h:dataTable value="#{professorBean.tccs}" var="t"
+										class="table table-striped table-hover"
+										headerClass="background-color: #34e89e; color: #fff;">
+								<h:column>
+									<f:facet name="header"></f:facet>
+									
+									<h:link outcome="/professor/editarDetalhesTcc?id=#{t.id}" styleClass="btn btn-default">
+										<i class="glyphicon glyphicon-edit"></i>
+									</h:link>
+								</h:column>
+								<h:column>
+									<f:facet name="header">Orientando</f:facet>
+									#{t.aluno.nome}
+								</h:column>
+								<h:column>
+									<f:facet name="header">Matricula</f:facet>
+									#{t.aluno.matricula }
+								</h:column>
+								<h:column>
+									<f:facet name="header">E-mail</f:facet>
+									#{t.aluno.email }
+								</h:column>
+								<h:column>
+									<f:facet name="header">Titulo</f:facet>
+									#{t.titulo }
+								</h:column>
+							</h:dataTable>
+						</h:form>
+					</ui:fragment>
+					
+					<ui:fragment rendered="#{empty professorBean.tccs}">
+						<h2 class="text-center">Nenhum orientando registrado</h2>
+					</ui:fragment>	
 				</div>
 			</div>
 		</div>
